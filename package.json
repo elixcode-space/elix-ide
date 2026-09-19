@@ -94,7 +94,7 @@
     "@codingame/monaco-vscode-welcome-service-override": "^24.2.0",
     "@codingame/monaco-vscode-workbench-service-override": "^24.2.0",
     "@codingame/monaco-vscode-working-copy-service-override": "^24.2.0",
-    "@codingame/monaco-vscode-workspace-trust-service-override": "^24.2.0",
+    "@codingame/monaco-vscode-workspace-trust-service-override": "^36.2.7",
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-dialog": "^2",
     "@tauri-apps/plugin-fs": "^2",
