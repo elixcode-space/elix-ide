@@ -370,7 +370,7 @@ impl LSPServerManager {
             "rust-analyzer" => {
                 let url = "https://api.github.com/repos/rust-lang/rust-analyzer/releases/latest";
                 let response = self.http_client.get(url)
-                    .header("User-Agent", "ElixIDE")
+                    .header("User-Agent", "ElixirIDE")
                     .send()
                     .await?;
                 let json: serde_json::Value = response.json().await?;

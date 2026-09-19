@@ -278,7 +278,7 @@ async fn handle_stream_socket(mut socket: WebSocket, query: String) {
 }
 
 pub fn run_unikernel() -> ! {
-    println!("ElixIDE Core Engine (Unikernel Mode) starting...");
+    println!("ElixirIDE Core Engine (Unikernel Mode) starting...");
 
     let rt = tokio::runtime::Builder::new_current_thread()
         .enable_all()

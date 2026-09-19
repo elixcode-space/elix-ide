@@ -86,12 +86,12 @@ case $EDITOR in
         run_editor_benchmark "Cursor" "cursor" "$TEST_WORKSPACE"
         ;;
     elixide)
-        run_editor_benchmark "ElixIDE" "cargo run --release --manifest-path=$(pwd)/src-tauri/Cargo.toml --" "$TEST_WORKSPACE"
+        run_editor_benchmark "ElixirIDE" "cargo run --release --manifest-path=$(pwd)/src-tauri/Cargo.toml --" "$TEST_WORKSPACE"
         ;;
     all)
         run_editor_benchmark "VSCode" "code" "$TEST_WORKSPACE"
         run_editor_benchmark "Cursor" "cursor" "$TEST_WORKSPACE"
-        run_editor_benchmark "ElixIDE" "cargo run --release --manifest-path=$(pwd)/src-tauri/Cargo.toml --" "$TEST_WORKSPACE"
+        run_editor_benchmark "ElixirIDE" "cargo run --release --manifest-path=$(pwd)/src-tauri/Cargo.toml --" "$TEST_WORKSPACE"
         ;;
     *)
         echo "Unknown editor: $EDITOR"

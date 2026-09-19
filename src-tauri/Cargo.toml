@@ -1,7 +1,7 @@
 [package]
 name = "elixide"
 version = "0.1.0"
-description = "ElixIDE - AI-powered agentic IDE"
+description = "ElixirIDE - AI-powered agentic IDE"
 authors = ["ElixCode Space"]
 edition = "2021"
 default-run = "elixide"

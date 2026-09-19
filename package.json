@@ -1,7 +1,7 @@
 {
   "name": "elixide",
   "version": "0.1.0",
-  "description": "ElixIDE - AI-powered agentic IDE",
+  "description": "ElixirIDE - AI-powered agentic IDE",
   "repository": {
     "type": "git",
     "url": "https://github.com/elixcode-space/elix-ide.git"

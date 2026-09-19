@@ -75,7 +75,7 @@ impl LSPClient {
                     .to_string(),
             }]),
             client_info: Some(ClientInfo {
-                name: "ElixIDE".to_string(),
+                name: "ElixirIDE".to_string(),
                 version: Some(env!("CARGO_PKG_VERSION").to_string()),
             }),
             locale: None,

@@ -117,7 +117,7 @@ impl ExtensionManager {
         let url = format!("{}/search", self.openvsx_base_url);
         let response = self.http_client.get(&url)
             .query(&[("text", query), ("page", &page.to_string()), ("size", &page_size.to_string())])
-            .header("User-Agent", "ElixIDE")
+            .header("User-Agent", "ElixirIDE")
             .send()
             .await?;
         
@@ -144,7 +144,7 @@ impl ExtensionManager {
     pub async fn get_extension_info(&self, publisher: &str, name: &str) -> Result<ExtensionInfo> {
         let url = format!("{}/{}/{}", self.openvsx_base_url, publisher, name);
         let response = self.http_client.get(&url)
-            .header("User-Agent", "ElixIDE")
+            .header("User-Agent", "ElixirIDE")
             .send()
             .await?;
         

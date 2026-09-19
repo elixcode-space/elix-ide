@@ -1,4 +1,4 @@
-# ElixIDE Architecture Blueprint
+# ElixirIDE Architecture Blueprint
 
 ## System Overview
 
