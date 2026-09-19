@@ -32,7 +32,7 @@
     "@codingame/monaco-vscode-explorer-service-override": "^24.2.0",
     "@codingame/monaco-vscode-extension-gallery-service-override": "^24.2.0",
     "@codingame/monaco-vscode-extensions-service-override": "^24.2.0",
-    "@codingame/monaco-vscode-files-service-override": "^24.2.0",
+    "@codingame/monaco-vscode-files-service-override": "^36.2.7",
     "@codingame/monaco-vscode-host-service-override": "^24.2.0",
     "@codingame/monaco-vscode-html-default-extension": "^24.2.0",
     "@codingame/monaco-vscode-html-language-features-default-extension": "^24.2.0",
