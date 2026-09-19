@@ -127,7 +127,7 @@ jobs:
           args: --target ${{ matrix.target }}
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.artifact_name }}
           path: src-tauri/target/${{ matrix.target }}/release/bundle/**/*
@@ -153,7 +153,7 @@ jobs:
           cat sha256sums.txt
 
       - name: Upload manifest
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: updater-manifest
           path: artifacts/
