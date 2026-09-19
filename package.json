@@ -68,7 +68,7 @@
     "@codingame/monaco-vscode-search-service-override": "^24.2.0",
     "@codingame/monaco-vscode-secret-storage-service-override": "^24.2.0",
     "@codingame/monaco-vscode-share-service-override": "^24.2.0",
-    "@codingame/monaco-vscode-snippets-service-override": "^24.2.0",
+    "@codingame/monaco-vscode-snippets-service-override": "^36.2.7",
     "@codingame/monaco-vscode-speech-service-override": "^24.2.0",
     "@codingame/monaco-vscode-storage-service-override": "^24.2.0",
     "@codingame/monaco-vscode-survey-service-override": "^24.2.0",
