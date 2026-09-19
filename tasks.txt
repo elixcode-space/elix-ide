@@ -1,6 +1,14 @@
-[✓] Task 5: LSP Servers - Download and manage language servers
-[✓] Task 6: LSP Features - Completion, hover, goto definition, references, diagnostics, code actions, rename, semantic tokens
-[•] Task 7: Extension Host Architecture - Node.js child process, RPC over stdio
+[✓] Rebrand blink/becknide → elixide/ElixirIDE across entire codebase
+[✓] Fix TypeScript errors (DebugPanel export, activeSession null, stackFrames/variables state)
+[✓] Rust build passes (cargo check)
+[✓] Frontend build passes (npm run build)
+[✓] Fix ElixirIDE spelling consistency across all files
+[✓] Add .gitignore entries (env, unikernel binaries, secrets)
+[✓] Remove large binaries and secrets from git tracking
+[✓] Create CHANGELOG.md
+[✓] Create AGENTS.md with project commands
+[✓] Add Nanos unikernel directory (build.sh, config.json, Dockerfile.nanos)
+[ ] Task 7: Extension Host Architecture - Node.js child process, RPC over stdio
 [ ] Task 8: Extension API Surface - Commands, views, tree views, webviews, configuration
 [ ] Task 9: Extension Management - Open-VSX registry, install/uninstall, activation events
 [ ] Task 10: DAP Client - CodeLLDB for Rust/C++, node-debug2 for JS/TS
