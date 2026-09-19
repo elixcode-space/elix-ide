@@ -22,7 +22,7 @@
     "@codingame/monaco-vscode-chat-service-override": "^24.2.0",
     "@codingame/monaco-vscode-comments-service-override": "^24.2.0",
     "@codingame/monaco-vscode-configuration-service-override": "^24.2.0",
-    "@codingame/monaco-vscode-css-default-extension": "^24.2.0",
+    "@codingame/monaco-vscode-css-default-extension": "^36.2.7",
     "@codingame/monaco-vscode-css-language-features-default-extension": "^24.2.0",
     "@codingame/monaco-vscode-debug-service-override": "^24.2.0",
     "@codingame/monaco-vscode-dialogs-service-override": "^24.2.0",
