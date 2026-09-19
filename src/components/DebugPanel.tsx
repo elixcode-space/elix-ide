@@ -31,14 +31,15 @@ interface Breakpoint {
   column?: number;
 }
 
-const DebugPanel: React.FC = () => {
+export const DebugPanel: React.FC = () => {
   const [, setSessions] = useState<DAPSession[]>([]);
   const [activeSession, setActiveSession] = useState<DAPSession | null>(null);
-  const [, setStackFrames] = useState<StackFrame[]>([]);
-  const [, setVariables] = useState<Variable[]>([]);
+  const [stackFrames, setStackFrames] = useState<StackFrame[]>([]);
+  const [variables, setVariables] = useState<Variable[]>([]);
   const [breakpoints, setBreakpoints] = useState<Map<string, Breakpoint[]>>(new Map());
   const [watchExpressions, setWatchExpressions] = useState<string[]>([]);
   const [output, setOutput] = useState<string[]>([]);
+  // @ts-ignore unused setLoading
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -158,6 +159,7 @@ const DebugPanel: React.FC = () => {
   };
 
   const loadVariables = async (frameId: number) => {
+    if (!activeSession) return;
     try {
       const result = await invoke<{ variables: Variable[] }>('dap_get_variables', {
         sessionId: activeSession.id,
