@@ -215,3 +215,11 @@ $RECYCLE.BIN/
 # JET
 exchange_components
 web
+
+# ElixirIDE specific
+.env
+unikernel/elixide-core
+unikernel/data/*.db
+unikernel/data/*.db-shm
+unikernel/data/*.db-wal
+unikernel/data/.secret_key
