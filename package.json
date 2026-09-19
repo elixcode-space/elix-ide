@@ -53,7 +53,7 @@
     "@codingame/monaco-vscode-markers-service-override": "^24.2.0",
     "@codingame/monaco-vscode-mcp-service-override": "^24.2.0",
     "@codingame/monaco-vscode-model-service-override": "^24.2.0",
-    "@codingame/monaco-vscode-multi-diff-editor-service-override": "^24.2.0",
+    "@codingame/monaco-vscode-multi-diff-editor-service-override": "^36.2.7",
     "@codingame/monaco-vscode-notebook-service-override": "^24.2.0",
     "@codingame/monaco-vscode-notifications-service-override": "^24.2.0",
     "@codingame/monaco-vscode-outline-service-override": "^24.2.0",
