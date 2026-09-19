@@ -75,7 +75,7 @@
     "@codingame/monaco-vscode-task-service-override": "^24.2.0",
     "@codingame/monaco-vscode-telemetry-service-override": "^24.2.0",
     "@codingame/monaco-vscode-terminal-service-override": "^24.2.0",
-    "@codingame/monaco-vscode-testing-service-override": "^24.2.0",
+    "@codingame/monaco-vscode-testing-service-override": "^36.2.7",
     "@codingame/monaco-vscode-textmate-service-override": "^24.2.0",
     "@codingame/monaco-vscode-theme-defaults-default-extension": "^24.2.0",
     "@codingame/monaco-vscode-theme-service-override": "^24.2.0",
