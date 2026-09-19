@@ -1,0 +1,5 @@
+# ElixirIDE Code Owners
+# This file controls who can review and merge PRs.
+# Changes require review from listed owners.
+
+* @elixcode-space/maintainers
