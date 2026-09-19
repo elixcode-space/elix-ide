@@ -29,7 +29,7 @@
     "@codingame/monaco-vscode-edit-sessions-service-override": "^24.2.0",
     "@codingame/monaco-vscode-emmet-service-override": "^24.2.0",
     "@codingame/monaco-vscode-environment-service-override": "^24.2.0",
-    "@codingame/monaco-vscode-explorer-service-override": "^24.2.0",
+    "@codingame/monaco-vscode-explorer-service-override": "^36.2.7",
     "@codingame/monaco-vscode-extension-gallery-service-override": "^24.2.0",
     "@codingame/monaco-vscode-extensions-service-override": "^24.2.0",
     "@codingame/monaco-vscode-files-service-override": "^24.2.0",
