@@ -1,4 +1,4 @@
-# Blink - Feature Checklist
+# ElixirIDE - Feature Checklist
 
 ## CRITICAL MANDATE
 
@@ -719,7 +719,7 @@ test_04_approve_agent_action() {
 | Installed tab shows extensions | ✅ DONE | `02-uninstall-ui-update.sh`    |
 | Extension details tabs         | ✅ DONE | `35-extension-details-tabs.sh` |
 
-### AI Chat (Blink Code Assist)
+### AI Chat (ElixirIDE Code Assist)
 
 | Feature           | Status     | E2E Test              |
 | ----------------- | ---------- | --------------------- |

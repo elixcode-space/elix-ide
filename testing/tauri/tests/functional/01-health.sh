@@ -1,5 +1,5 @@
 #!/bin/bash
-# Health check tests for Blink Tauri test server
+# Health check tests for ElixirIDE Tauri test server
 # These tests verify the basic functionality of the test server itself
 
 source "$(dirname "$0")/../lib/test-client.sh"

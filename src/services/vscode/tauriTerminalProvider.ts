@@ -169,7 +169,7 @@ export function registerTauriTerminalProfile(): any | null {
         return new vscodeAny.TerminalProfile({ name: 'Tauri Terminal', pty });
       },
     };
-    return vscodeAny.window.registerTerminalProfileProvider('blink.terminal', profileProvider);
+    return vscodeAny.window.registerTerminalProfileProvider('elixide.terminal', profileProvider);
   } catch (error) {
     console.warn('[TauriTerminal] Failed to register terminal profile provider:', error);
     return null;
@@ -202,7 +202,7 @@ export function initializeTauriTerminal(): { dispose: () => void } {
     }
 
     disposables.push(
-      vscodeLocal.commands.registerCommand('blink.newTerminal', async () => {
+      vscodeLocal.commands.registerCommand('elixide.newTerminal', async () => {
         const shells = await getAvailableShells();
 
         if (shells.length === 0) {
@@ -231,7 +231,7 @@ export function initializeTauriTerminal(): { dispose: () => void } {
     );
 
     disposables.push(
-      vscodeLocal.commands.registerCommand('blink.newTerminalWithShell', async (shellPath?: string) => {
+      vscodeLocal.commands.registerCommand('elixide.newTerminalWithShell', async (shellPath?: string) => {
         const shell = shellPath || (await getDefaultShell());
         const terminal = createTauriTerminal(undefined, shell);
         terminal.show();

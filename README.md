@@ -1,10 +1,10 @@
-# Blink
+# ElixirIDE
 
 ## THIS IS CURRENTLY A PROOF OF CONCEPT ONLY, AND SUPER BUGGY
 
 If you'd like to see more of this, let me know!
 
-**Blink is a native desktop IDE built on the full VS Code workbench, with an AI coding assistant built in.**
+**ElixirIDE is a native desktop IDE built on the full VS Code workbench, with an AI coding assistant built in.**
 
 It runs VS Code's actual editor engine (via [monaco-vscode-api](https://github.com/CodinGame/monaco-vscode-api)) inside a lightweight [Tauri](https://tauri.app) window. The result looks and works exactly like VS Code — file explorer, extensions marketplace, integrated terminal, IntelliSense, themes — with an AI chat panel alongside it.
 
@@ -12,11 +12,11 @@ It runs VS Code's actual editor engine (via [monaco-vscode-api](https://github.c
 
 ## Screenshots
 
-![Blink editor with file explorer and AI chat panel](docs/screenshots/blink-editor.png)
+![ElixirIDE editor with file explorer and AI chat panel](docs/screenshots/elixide-editor.png)
 
-*File explorer, integrated terminal, and AI chat panel (Blink Code Assist) side by side.*
+*File explorer, integrated terminal, and AI chat panel (ElixirIDE Code Assist) side by side.*
 
-![Blink extensions marketplace](docs/screenshots/blink-extensions.png)
+![ElixirIDE extensions marketplace](docs/screenshots/elixide-extensions.png)
 
 *Browse and install extensions directly from the Open VSX marketplace.*
 
@@ -27,7 +27,7 @@ It runs VS Code's actual editor engine (via [monaco-vscode-api](https://github.c
 - **Full VS Code editor** — syntax highlighting, IntelliSense, go-to-definition, multi-cursor, themes, keybindings — the whole thing, not a Monaco snippet
 - **Extensions marketplace** — install extensions from [Open VSX](https://open-vsx.org/) (Python, ESLint, Prettier, GitLens, etc.)
 - **Integrated terminal** — real shell (zsh/bash) running via Tauri's native PTY
-- **AI chat panel** — "Blink Code Assist" chat in the right-side auxiliary bar; supports `/plan`, `/agent`, `/compose`, `/run`, and other slash commands
+- **AI chat panel** — "ElixirIDE Code Assist" chat in the right-side auxiliary bar; supports `/plan`, `/agent`, `/compose`, `/run`, and other slash commands
 - **Bring your own AI** — connect any AI provider via API key: Anthropic (Claude), OpenAI (GPT-4o), or any OpenAI-compatible endpoint (Ollama, etc.)
 - **Native desktop app** — ships as a `.app` / `.dmg` on macOS; no browser, no Electron
 
@@ -35,7 +35,7 @@ It runs VS Code's actual editor engine (via [monaco-vscode-api](https://github.c
 
 ## Configuring the AI provider
 
-Open the Command Palette (`Cmd+Shift+P`) and run **Blink: Configure AI Provider**.
+Open the Command Palette (`Cmd+Shift+P`) and run **ElixirIDE: Configure AI Provider**.
 
 You'll be prompted to choose a provider and enter your API key:
 
@@ -144,7 +144,7 @@ index.html
 | `aiProviderService.ts` | Config storage + SSE streaming (Anthropic & OpenAI wire formats) |
 | `chatService.ts` | Thin service wrapper used by the chat agent |
 | `chatProvider.ts` | Implements the `ModelProvider` interface for the registry |
-| `configureProviderCommand.ts` | Registers the `blink.configureAIProvider` VS Code command |
+| `configureProviderCommand.ts` | Registers the `elixide.configureAIProvider` VS Code command |
 | `modelProvider.ts` | Provider registry abstraction (swap providers at runtime) |
 | `openaiProvider.ts` | Standalone OpenAI provider implementation |
 
@@ -164,14 +164,14 @@ The Rust layer (`src-tauri/`) provides:
 ## Project structure
 
 ```
-blink/
+elixide/
 ├── index.html                          # Vite entry HTML
 ├── vite.config.ts                      # Vite config (port 1420, web/ output)
 ├── src/
 │   ├── main.tsx                        # React entry — mounts <App />
 │   ├── components/
 │   │   ├── app.tsx                     # Root: SplashScreen + VSCodeWorkbench
-│   │   ├── common/                     # SplashScreen, BlinkLogo, LoadingSpinner
+│   │   ├── common/                     # SplashScreen, ElixirIDELogo, LoadingSpinner
 │   │   └── vscode/                     # VSCodeWorkbench component + CSS
 │   ├── services/
 │   │   ├── vscode/                     # VS Code integration (~50 files)

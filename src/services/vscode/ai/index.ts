@@ -1,5 +1,5 @@
 /**
- * Blink AI Module
+ * ElixirIDE AI Module
  *
  * Provides model provider abstraction and implementations.
  */

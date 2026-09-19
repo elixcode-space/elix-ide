@@ -1,5 +1,5 @@
 #!/bin/bash
-# User-centric terminal tests for Blink
+# User-centric terminal tests for ElixirIDE
 # Tests that simulate real user interactions with the terminal
 
 source "$(dirname "$0")/../lib/test-client.sh"

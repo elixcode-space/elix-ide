@@ -1,5 +1,5 @@
 #!/bin/bash
-# Terminal UI integration tests for Blink
+# Terminal UI integration tests for ElixirIDE
 # Tests the actual VS Code terminal UI functionality
 
 source "$(dirname "$0")/../lib/test-client.sh"
@@ -59,7 +59,7 @@ test_terminal_instance_exists() {
     local result=$(test_js "(async () => {
         try {
             // Try to access terminal service
-            const terminalService = window.__BLINK_SERVICES__?.terminalService;
+            const terminalService = window.__ELIXIDE_SERVICES__?.terminalService;
             if (terminalService) {
                 const instances = terminalService.instances || [];
                 return {

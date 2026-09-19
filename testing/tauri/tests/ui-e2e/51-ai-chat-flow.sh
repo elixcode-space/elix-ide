@@ -5,7 +5,7 @@
 # TESTING PHILOSOPHY
 # ============================================================================
 #
-# These tests verify the end-to-end chat message flow using Blink Code Assist.
+# These tests verify the end-to-end chat message flow using ElixirIDE Code Assist.
 # They test that messages can be sent and the AI agent is invoked properly.
 #
 # ============================================================================

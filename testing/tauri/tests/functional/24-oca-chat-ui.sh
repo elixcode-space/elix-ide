@@ -20,7 +20,7 @@ test_03_chat_input_exists(){
 }
 
 test_04_oca_participant_registered(){
-  local result=$(test_js "(function(){if(window.__OCA_CHAT_REGISTERED__)return 'registered';const parts=document.querySelectorAll('[class*=\"participant\"],[class*=\"agent\"]');for(const p of parts){const t=p.textContent||'';if(t.toLowerCase().includes('blink'))return 'found-in-ui';}return 'not-registered';})()")
+  local result=$(test_js "(function(){if(window.__OCA_CHAT_REGISTERED__)return 'registered';const parts=document.querySelectorAll('[class*=\"participant\"],[class*=\"agent\"]');for(const p of parts){const t=p.textContent||'';if(t.toLowerCase().includes('elixide'))return 'found-in-ui';}return 'not-registered';})()")
   local status=$(echo "$result"|jq -r '.result')
   if [[ "$status" == "registered" || "$status" == "found-in-ui" ]]; then ((TESTS_PASSED++)); else ((TESTS_SKIPPED++)); fi
 }

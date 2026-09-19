@@ -1,5 +1,5 @@
 #!/bin/bash
-# Workbench tests for Blink Tauri application
+# Workbench tests for ElixirIDE Tauri application
 # These tests verify the VS Code workbench is properly loaded
 
 source "$(dirname "$0")/../lib/test-client.sh"

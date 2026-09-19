@@ -2486,7 +2486,7 @@ async function registerTauriAsLocalServer(services: { get: <T>(id: unknown) => T
 
       // Check if this is a Tauri-installed extension (located in our extensions folder)
       if (path.includes('/extensions/installed/') || path.includes('\\extensions\\installed\\') ||
-          path.includes('/com.blink.app/') || path.includes('\\com.blink.app\\')) {
+          path.includes('/com.elixide.app/') || path.includes('\\com.elixide.app\\')) {
         debugLog('TauriLocal.getServer', '>>> Returning Tauri local server');
         return tauriLocalServer;
       }
@@ -2520,8 +2520,8 @@ async function registerTauriAsLocalServer(services: { get: <T>(id: unknown) => T
       debugLog('TauriLocal.getInstallLocation', `>>> CALLED for path: ${path}`);
 
       // For Tauri extensions, return Local (0)
-      if (path.includes('/extensions/installed/') || path.includes('/com.blink.app/') ||
-          path.includes('\\extensions\\installed\\') || path.includes('\\com.blink.app\\')) {
+      if (path.includes('/extensions/installed/') || path.includes('/com.elixide.app/') ||
+          path.includes('\\extensions\\installed\\') || path.includes('\\com.elixide.app\\')) {
         debugLog('TauriLocal.getInstallLocation', '>>> Returning Local (0)');
         return 0; // ExtensionInstallLocation.Local
       }

@@ -12,7 +12,7 @@ import { open as openDialog } from '@tauri-apps/plugin-dialog';
 import { WebviewWindow } from '@tauri-apps/api/webviewWindow';
 
 // Storage key for workspace folder
-const WORKSPACE_FOLDER_KEY = 'blink-workspace-folder';
+const WORKSPACE_FOLDER_KEY = 'elixide-workspace-folder';
 
 /**
  * Store the workspace folder path
@@ -68,7 +68,7 @@ async function openFolderInNewWindowAction(): Promise<void> {
     // Use hash routing to match the app's router configuration
     const newWindow = new WebviewWindow(windowLabel, {
       url: `${baseUrl}/#/vscode?folder=${encodedPath}`,
-      title: `Blink - ${selected.split('/').pop()}`,
+      title: `ElixirIDE - ${selected.split('/').pop()}`,
       width: 1200,
       height: 800,
       center: true,

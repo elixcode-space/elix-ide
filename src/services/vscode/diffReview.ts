@@ -364,7 +364,7 @@ export function getPendingDiffSession(): DiffSession | null {
 class AcceptDiffAction extends Action2 {
   constructor() {
     super({
-      id: 'blink.diffReview.accept',
+      id: 'elixide.diffReview.accept',
       title: { value: 'Accept AI Changes', original: 'Accept AI Changes' },
       category: { value: 'AI', original: 'AI' },
       f1: true,
@@ -395,7 +395,7 @@ class AcceptDiffAction extends Action2 {
 class RejectDiffAction extends Action2 {
   constructor() {
     super({
-      id: 'blink.diffReview.reject',
+      id: 'elixide.diffReview.reject',
       title: { value: 'Reject AI Changes', original: 'Reject AI Changes' },
       category: { value: 'AI', original: 'AI' },
       f1: true,

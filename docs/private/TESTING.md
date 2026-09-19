@@ -1,4 +1,4 @@
-# Blink - Testing Guidelines
+# ElixirIDE - Testing Guidelines
 
 ## CRITICAL MANDATE
 

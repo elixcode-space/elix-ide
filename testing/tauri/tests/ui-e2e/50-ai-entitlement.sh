@@ -6,7 +6,7 @@
 # ============================================================================
 #
 # These tests verify the AI Chat Entitlement Service which bypasses VS Code's
-# default Copilot login overlay and uses Blink Code Assist authentication.
+# default Copilot login overlay and uses ElixirIDE AI authentication.
 #
 # ============================================================================
 #

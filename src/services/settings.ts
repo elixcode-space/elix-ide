@@ -214,10 +214,10 @@ export const SETTINGS_SCHEMA: SettingDefinition[] = [
     enumLabels: ['JetBrains Mono', 'Fira Code', 'Menlo'],
   },
   {
-    key: 'terminal.cursorBlink',
+    key: 'terminal.cursorElixirIDE',
     type: 'boolean',
     default: true,
-    label: 'Terminal Cursor Blink',
+    label: 'Terminal Cursor ElixirIDE',
     description: 'Enable cursor blinking in the terminal.',
     category: 'terminal',
     order: 3,
@@ -358,7 +358,7 @@ export interface TerminalSettings {
   fontSize: number;
   fontFamily: string;
   cursorStyle: 'block' | 'underline' | 'bar';
-  cursorBlink: boolean;
+  cursorElixirIDE: boolean;
   scrollback: number;
 }
 
@@ -372,7 +372,7 @@ const DEFAULT_TERMINAL_SETTINGS: TerminalSettings = {
   fontSize: 14,
   fontFamily: "'JetBrains Mono', 'Fira Code', Menlo, Monaco, 'Courier New', monospace",
   cursorStyle: 'block',
-  cursorBlink: true,
+  cursorElixirIDE: true,
   scrollback: 10000,
 };
 
@@ -381,7 +381,7 @@ const DEFAULT_APP_SETTINGS: AppSettings = {
   theme: 'dark',
 };
 
-const LEGACY_STORAGE_KEY = 'blink-settings';
+const LEGACY_STORAGE_KEY = 'elixide-settings';
 
 export function loadSettings(): AppSettings {
   try {

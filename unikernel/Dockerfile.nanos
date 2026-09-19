@@ -1,0 +1,9 @@
+FROM nanovms/bootimage:latest
+
+COPY target/release/elixide-core /app/
+COPY models /models/
+COPY config.json /config.json
+
+ENV OPS_CONFIG=/config.json
+
+CMD ["ops", "run", "-c", "/config.json"]

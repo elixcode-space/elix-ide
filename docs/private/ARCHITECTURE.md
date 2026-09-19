@@ -1,8 +1,8 @@
-# Blink Architecture
+# ElixirIDE Architecture
 
 ## Overview
 
-Blink is a desktop IDE built with:
+ElixirIDE is a desktop IDE built with:
 
 - **Tauri v2**: Rust-based desktop framework (replaces Electron)
 - **React**: UI library (v19)
@@ -117,7 +117,7 @@ Extension flow:
 4. Extension registered with local server
 5. UI updated via event system
 
-### 4. Blink Agent Integration
+### 4. ElixirIDE Agent Integration
 
 **Files**:
 
@@ -137,7 +137,7 @@ Custom editors are registered for `.docx`, `.xlsx`, `.pptx` files.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    Blink (Tauri v2)                       │
+│                    ElixirIDE (Tauri v2)                       │
 │  ┌───────────────────────────────────────────────────────────┐  │
 │  │              WebView + monaco-vscode-api                   │  │
 │  │  - Web Worker Extension Host (themes, grammars, snippets) │  │
@@ -227,7 +227,7 @@ onComplete fires when stream ends
 ### AI Configuration
 
 ```
-User opens Command Palette → "Blink: Configure AI Provider"
+User opens Command Palette → "ElixirIDE: Configure AI Provider"
         ↓
 configureProviderCommand.ts shows provider picker
         ↓
@@ -235,7 +235,7 @@ User selects Anthropic / OpenAI / Custom
         ↓
 User enters API key and model
         ↓
-Config stored in localStorage (blink-ai-provider-config)
+Config stored in localStorage (elixide-ai-provider-config)
         ↓
 isAIProviderConfigured() returns true
         ↓
@@ -246,24 +246,24 @@ streamChat() is ready for requests
 
 ### User Settings
 
-- Stored in: `~/.blink/settings.json`
+- Stored in: `~/.elixide/settings.json`
 - Loaded by: `src/services/settings.ts`
 - Synced to VS Code configuration service
 
 ### Extension Storage
 
-- Location: `~/.blink/extensions/`
-- Metadata: `~/.blink/extensions.json`
+- Location: `~/.elixide/extensions/`
+- Metadata: `~/.elixide/extensions.json`
 
 ### Workspace
 
-- Stored in: `localStorage` (key: `blink-workspace-folder`)
+- Stored in: `localStorage` (key: `elixide-workspace-folder`)
 - Can be passed via URL: `/#/vscode?folder=/path/to/folder`
 
 ### AI Configuration
 
-- Config: `localStorage` (key: `blink-ai-provider-config`)
-- Managed via Command Palette: "Blink: Configure AI Provider"
+- Config: `localStorage` (key: `elixide-ai-provider-config`)
+- Managed via Command Palette: "ElixirIDE: Configure AI Provider"
 
 ---
 

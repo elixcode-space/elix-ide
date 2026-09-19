@@ -47,7 +47,7 @@ function getOSContext(): string {
  * Get current working directory from localStorage
  */
 function getCurrentWorkingDirectory(): string {
-  return localStorage.getItem('blink-workspace-folder') || '~';
+  return localStorage.getItem('elixide-workspace-folder') || '~';
 }
 
 /**
@@ -218,7 +218,7 @@ export async function executeInTerminal(command: string, createNew: boolean = fa
 class TerminalAIAction extends Action2 {
   constructor() {
     super({
-      id: 'blink.terminalAI',
+      id: 'elixide.terminalAI',
       title: { value: 'AI: Generate Shell Command', original: 'AI: Generate Shell Command' },
       category: { value: 'Terminal', original: 'Terminal' },
       f1: true,

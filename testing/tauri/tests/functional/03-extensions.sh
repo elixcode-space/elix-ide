@@ -1,5 +1,5 @@
 #!/bin/bash
-# Extension management tests for Blink Tauri application
+# Extension management tests for ElixirIDE Tauri application
 # These tests verify extension panel and management functionality
 
 source "$(dirname "$0")/../lib/test-client.sh"

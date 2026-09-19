@@ -1,0 +1,12 @@
+[✓] Task 5: LSP Servers - Download and manage language servers
+[✓] Task 6: LSP Features - Completion, hover, goto definition, references, diagnostics, code actions, rename, semantic tokens
+[•] Task 7: Extension Host Architecture - Node.js child process, RPC over stdio
+[ ] Task 8: Extension API Surface - Commands, views, tree views, webviews, configuration
+[ ] Task 9: Extension Management - Open-VSX registry, install/uninstall, activation events
+[ ] Task 10: DAP Client - CodeLLDB for Rust/C++, node-debug2 for JS/TS
+[ ] Task 11: Git Integration - git2-rs for status, diff, commit, push, branch, blame
+[ ] Task 12: Terminal 2.0 - Shell integration, cwd tracking, links, tabs, split panes
+[ ] Task 13: Packaging - .dmg, .msi, .deb, .AppImage with signing/notarization
+[ ] Task 14: Auto-Update - Delta updates, rollback, channels
+[ ] Task 15: Telemetry/Crash Reporting - Sentry, opt-in analytics
+[ ] Task 16: Dogfood & Polish - Internal usage, bug bash, docs

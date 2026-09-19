@@ -11,7 +11,7 @@ import type { IDisposable } from '@codingame/monaco-vscode-api/vscode/vs/base/co
 
 // DOCX Editor Input - represents a DOCX file in the editor
 class DocxEditorInput extends SimpleEditorInput {
-  static readonly ID = 'blink.docxEditorInput';
+  static readonly ID = 'elixide.docxEditorInput';
   private _path: string;
 
   constructor(resource: URI) {
@@ -33,7 +33,7 @@ class DocxEditorInput extends SimpleEditorInput {
 
 // DOCX Editor Pane - renders the DOCX content
 class DocxEditorPane extends SimpleEditorPane {
-  static readonly ID = 'blink.docxEditorPane';
+  static readonly ID = 'elixide.docxEditorPane';
   private docContainer: HTMLDivElement | null = null;
   private currentPath: string | null = null;
 

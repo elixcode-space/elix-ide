@@ -4,9 +4,9 @@
 //! Based on openvscode-server's serverEnvironmentService.ts.
 //!
 //! Key paths:
-//! - User data: ~/Library/Application Support/blink/user-data (macOS)
-//! - Extensions: ~/Library/Application Support/blink/extensions
-//! - Logs: ~/Library/Application Support/blink/logs
+//! - User data: ~/Library/Application Support/elixide/user-data (macOS)
+//! - Extensions: ~/Library/Application Support/elixide/extensions
+//! - Logs: ~/Library/Application Support/elixide/logs
 
 use std::any::Any;
 use std::path::PathBuf;

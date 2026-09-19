@@ -216,7 +216,7 @@ test_08_rules_show() {
     local result=$(test_js "(async function() {
         try {
             const response = await window.__HANDLE_RULES__('show');
-            return (response.includes('Project Rules') || response.includes('Guidelines') || response.includes('blink-rules'))
+            return (response.includes('Project Rules') || response.includes('Guidelines') || response.includes('elixide-rules'))
                    ? 'has-content' : 'no-content';
         } catch (e) {
             return 'error: ' + e.message;

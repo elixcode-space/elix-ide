@@ -1,5 +1,5 @@
 #!/bin/bash
-# Error Check Tests for Blink
+# Error Check Tests for ElixirIDE
 #
 # STRICT POLICY: These tests FAIL if ANY warning or error appears in OUTPUT.
 # Do not hide issues - fix the root cause.

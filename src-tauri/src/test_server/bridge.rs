@@ -358,7 +358,7 @@ pub fn get_bridge_script() -> &'static str {
                     return { success: true, message: 'Extensions refreshed' };
                 }
                 // Alternative: try via the services
-                const services = window.__BLINK_SERVICES__;
+                const services = window.__ELIXIDE_SERVICES__;
                 if (services && services.extensionManager && services.extensionManager.refresh) {
                     await services.extensionManager.refresh();
                     return { success: true, message: 'Extensions refreshed via services' };

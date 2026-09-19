@@ -62,7 +62,7 @@ let currentPlan: Plan | null = null;
  * Get workspace context for planning
  */
 function getWorkspaceContext(): string {
-  const folder = localStorage.getItem('blink-workspace-folder') || '~';
+  const folder = localStorage.getItem('elixide-workspace-folder') || '~';
   return `Current workspace: ${folder}`;
 }
 
@@ -276,7 +276,7 @@ function getStepIcon(action: PlanStep['action']): string {
  * Get workspace folder path
  */
 function getWorkspaceFolder(): string | null {
-  return localStorage.getItem('blink-workspace-folder');
+  return localStorage.getItem('elixide-workspace-folder');
 }
 
 /**
@@ -644,7 +644,7 @@ export async function executePlan(
 class PlanModeAction extends Action2 {
   constructor() {
     super({
-      id: 'blink.planMode',
+      id: 'elixide.planMode',
       title: { value: 'AI: Plan Mode', original: 'AI: Plan Mode' },
       category: { value: 'AI', original: 'AI' },
       f1: true,

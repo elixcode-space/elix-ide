@@ -18,7 +18,7 @@ OCA_MOCK_DELAY="${OCA_MOCK_DELAY:-100}"  # Simulated network delay in ms
 # Mock Response Templates
 # ============================================================================
 
-AI_MOCK_RESPONSE_HELLO="Hello! I am Blink Code Assist. How can I help you today?"
+AI_MOCK_RESPONSE_HELLO="Hello! I am ElixirIDE Code Assist. How can I help you today?"
 OCA_MOCK_RESPONSE_CODE='Here is a simple function:\n\n```javascript\nfunction greet(name) {\n  return `Hello, ${name}!`;\n}\n```'
 OCA_MOCK_RESPONSE_PLAN='## Implementation Plan\n\n1. **CREATE** `src/components/Button.tsx`\n   - Add button component with props\n\n2. **MODIFY** `src/App.tsx`\n   - Import and use new Button\n\nType `/approve` to execute this plan.'
 OCA_MOCK_RESPONSE_RUN='```bash\nls -la\n```\n\nThis command lists all files including hidden ones.'

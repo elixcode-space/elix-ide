@@ -25,10 +25,16 @@ import { initializeTauriFileSystem } from './tauriFileSystemProvider';
 import { initializeVSCodeUserDataProvider } from './vsCodeUserDataProvider';
 // Note: AI chat is only in auxiliary bar (right side)
 import { registerAIChatAgent } from './aiChatAgent';
-import { getBlinkThemeCSS } from './blinkDarkTheme';
+import { getElixirIDEThemeCSS } from './elixideDarkTheme';
 import { registerWorkspaceCommands } from './workspaceCommands';
-import { registerExtensionCommands } from './extensionCommands';
+import { registerExtensionCommands } from './extensionCommands.tsx';
+import { registerGitPanel } from './gitCommands';
+import { registerDebugPanel } from './debugCommands';
+import { registerTerminalPanel } from './terminalCommands';
+import { registerSearchPanel } from './searchCommands';
+import { registerFileExplorer } from './fileExplorerCommands';
 import { open as openDialog } from '@tauri-apps/plugin-dialog';
+import { invoke } from '@tauri-apps/api/core';
 import { TauriFileDialogService } from './tauriFileDialogService';
 import { patchExtensionServices } from './extensionServiceOverride';
 import { vscodeServerService } from './vscodeServerService';
@@ -50,7 +56,7 @@ import { registerConfigureProviderCommand } from './ai/configureProviderCommand'
 import userConfiguration from './userConfiguration.json';
 
 // Storage key for workspace folder
-const WORKSPACE_FOLDER_KEY = 'blink-workspace-folder';
+const WORKSPACE_FOLDER_KEY = 'elixide-workspace-folder';
 
 // Service overrides for workbench
 import getWorkbenchServiceOverride from '@codingame/monaco-vscode-workbench-service-override';
@@ -106,7 +112,6 @@ import { IUpdateService } from '@codingame/monaco-vscode-api/vscode/vs/platform/
 import { SyncDescriptor } from '@codingame/monaco-vscode-api/vscode/vs/platform/instantiation/common/descriptors';
 import { TauriUpdateService } from './tauriUpdateService';
 
-// Override webview asset URLs to use our patched files
 // This is called AFTER view-common-service-override imports (which registers default assets)
 // so our registration takes precedence
 const webviewBasePath = `${window.location.origin}/vs/workbench/contrib/webview/browser/pre/`;
@@ -279,12 +284,12 @@ async function doInitializeWorkbench(container: HTMLElement): Promise<void> {
 
     try {
       const origin = window.location.origin;
-      const base = `${origin}/extensions-web/builtin/blink-office-custom-editors`;
+      const base = `${origin}/extensions-web/builtin/elixide-office-custom-editors`;
       const manifestUrl = `${base}/package.json`;
       const codeUrl = `${base}/extension.js`;
       const manifest = await (await fetch(manifestUrl)).json();
-      manifest.name = manifest.name || 'blink-office-custom-editors-web';
-      manifest.publisher = manifest.publisher || 'blink';
+      manifest.name = manifest.name || 'elixide-office-custom-editors-web';
+      manifest.publisher = manifest.publisher || 'elixide';
       manifest.version = manifest.version || '0.0.1';
       manifest.browser = manifest.browser || './extension.js';
       const { registerExtension, ExtensionHostKind } = await import('@codingame/monaco-vscode-api/extensions');
@@ -292,7 +297,7 @@ async function doInitializeWorkbench(container: HTMLElement): Promise<void> {
       registerFileUrl('./extension.js', codeUrl);
       registerFileUrl('package.json', manifestUrl);
       await whenReady();
-      console.log('[Workbench] Registered Blink Office Custom Editors extension manifest');
+      console.log('[Workbench] Registered ElixirIDE Office Custom Editors extension manifest');
     } catch (e) {
       console.warn('[Workbench] Could not register Custom Editors extension', e);
     }
@@ -338,7 +343,7 @@ async function doInitializeWorkbench(container: HTMLElement): Promise<void> {
         console.warn('[Workbench] User configuration init failed:', e);
       }
 
-      // Note: Extension services are patched after initialize() via patchExtensionServices()
+// Note: Extension services are patched after initialize() via patchExtensionServices()
       console.log('[Workbench] Calling initialize() with workbench service override...');
       console.log('[Workbench] Container element:', container);
       try {
@@ -346,74 +351,74 @@ async function doInitializeWorkbench(container: HTMLElement): Promise<void> {
           {
             // Core services
             ...getLogServiceOverride(),
-          ...getFilesServiceOverride(),
-          ...getExtensionsServiceOverride({ enableWorkerExtensionHost: true }),
-          // webOnly: false allows non-web extensions to appear in search results
-          // The actual install button enabling is done by patchExtensionServices()
-          ...getExtensionGalleryServiceOverride({ webOnly: false }),
-          ...getModelServiceOverride(),
-          ...getStorageServiceOverride(),
-          ...getLifecycleServiceOverride(),
-          ...getEnvironmentServiceOverride(),
-          ...getRemoteAgentServiceOverride({ scanRemoteExtensions: true }),
-          ...getWorkspaceTrustServiceOverride(),
-          // Configuration and keybindings
-          ...getConfigurationServiceOverride(),
-          ...getKeybindingsServiceOverride(),
-          // Theme and syntax
-          ...getThemeServiceOverride(),
-          ...getTextmateServiceOverride(),
-          ...getLanguagesServiceOverride(),
-          // UI services - WORKBENCH instead of views
-          ...getWorkbenchServiceOverride(),
-          ...getDialogsServiceOverride(),
-          ...getNotificationsServiceOverride(),
-          ...getQuickAccessServiceOverride(),
-          ...getBannerServiceOverride(),
-          ...getStatusBarServiceOverride(),
-          ...getTitleBarServiceOverride(),
-          // Webview service for extension README/CHANGELOG rendering
-          ...getViewCommonServiceOverride(),
-          // Feature services
-          ...getAccessibilityServiceOverride(),
-          ...getAuthenticationServiceOverride(),
-          ...getDebugServiceOverride(),
-          ...getPreferencesServiceOverride(),
-          ...getOutlineServiceOverride(),
-          ...getTimelineServiceOverride(),
-          ...getSnippetsServiceOverride(),
-          ...getOutputServiceOverride(),
-          // Terminal service with Tauri PTY backend
-          // getTerminalServiceOverride(backend) registers the backend with the registry internally
-          ...getTerminalServiceOverride(getTauriTerminalBackend()),
-          ...getSearchServiceOverride(),
-          ...getMarkersServiceOverride(),
-          ...getWorkingCopyServiceOverride(),
-          ...getScmServiceOverride(),
-          ...getTestingServiceOverride(),
-          ...getChatServiceOverride(),
-          // Custom entitlement service - bypasses VS Code's Copilot login UI
-          [IChatEntitlementService.toString()]: getChatEntitlementService(),
-          ...getAiServiceOverride(),
-          ...getMcpServiceOverride(),
-          ...getExplorerServiceOverride(),
-          ...getLocalizationServiceOverride({
-            availableLanguages: [],
-            async clearLocale() {},
-            async setLocale() {},
-          }),
-          ...getSecretStorageServiceOverride(),
-          // Custom Tauri file dialog service
-          [IFileDialogService.toString()]: new TauriFileDialogService(),
-          // Custom Tauri update service (uses Tauri's native updater plugin)
-          [IUpdateService.toString()]: new SyncDescriptor(TauriUpdateService, [], true),
-        },
+            ...getFilesServiceOverride(),
+            ...getExtensionsServiceOverride({ enableWorkerExtensionHost: true }),
+            // webOnly: false allows non-web extensions to appear in search results
+            // The actual install button enabling is done by patchExtensionServices()
+            ...getExtensionGalleryServiceOverride({ webOnly: false }),
+            ...getModelServiceOverride(),
+            ...getStorageServiceOverride(),
+            ...getLifecycleServiceOverride(),
+            ...getEnvironmentServiceOverride(),
+            ...getRemoteAgentServiceOverride({ scanRemoteExtensions: true }),
+            ...getWorkspaceTrustServiceOverride(),
+            // Configuration and keybindings - USE TAURI BACKEND via initUserConfiguration
+            ...getConfigurationServiceOverride(),
+            ...getKeybindingsServiceOverride(),
+            // Theme and syntax
+            ...getThemeServiceOverride(),
+            ...getTextmateServiceOverride(),
+            ...getLanguagesServiceOverride(),
+            // UI services - WORKBENCH instead of views
+            ...getWorkbenchServiceOverride(),
+            ...getDialogsServiceOverride(),
+            ...getNotificationsServiceOverride(),
+            ...getQuickAccessServiceOverride(),
+            ...getBannerServiceOverride(),
+            ...getStatusBarServiceOverride(),
+            ...getTitleBarServiceOverride(),
+            // Webview service for extension README/CHANGELOG rendering
+            ...getViewCommonServiceOverride(),
+            // Feature services
+            ...getAccessibilityServiceOverride(),
+            ...getAuthenticationServiceOverride(),
+            ...getDebugServiceOverride(),
+            ...getPreferencesServiceOverride(),
+            ...getOutlineServiceOverride(),
+            ...getTimelineServiceOverride(),
+            ...getSnippetsServiceOverride(),
+            ...getOutputServiceOverride(),
+            // Terminal service with Tauri PTY backend
+            // getTerminalServiceOverride(backend) registers the backend with the registry internally
+            ...getTerminalServiceOverride(getTauriTerminalBackend()),
+            ...getSearchServiceOverride(),
+            ...getMarkersServiceOverride(),
+            ...getWorkingCopyServiceOverride(),
+            ...getScmServiceOverride(),
+            ...getTestingServiceOverride(),
+            ...getChatServiceOverride(),
+            // Custom entitlement service - bypasses VS Code's Copilot login UI
+            [IChatEntitlementService.toString()]: getChatEntitlementService(),
+            ...getAiServiceOverride(),
+            ...getMcpServiceOverride(),
+            ...getExplorerServiceOverride(),
+            ...getLocalizationServiceOverride({
+              availableLanguages: [],
+              async clearLocale() {},
+              async setLocale() {},
+            }),
+            ...getSecretStorageServiceOverride(),
+            // Custom Tauri file dialog service
+            [IFileDialogService.toString()]: new TauriFileDialogService(),
+            // Custom Tauri update service (uses Tauri's native updater plugin)
+            [IUpdateService.toString()]: new SyncDescriptor(TauriUpdateService, [], true),
+          },
         container,
         {
           // Product configuration for extension marketplace
           productConfiguration: {
-            nameShort: 'Blink',
-            nameLong: 'Blink IDE',
+            nameShort: 'ElixirIDE',
+            nameLong: 'ElixirIDE',
             extensionsGallery: {
               serviceUrl: 'https://open-vsx.org/vscode/gallery',
               resourceUrlTemplate: 'https://open-vsx.org/vscode/unpkg/{publisher}/{name}/{version}/{path}',
@@ -600,6 +605,30 @@ async function doInitializeWorkbench(container: HTMLElement): Promise<void> {
     // Register extension commands (Install from VSIX)
     registerExtensionCommands();
 
+    // Register Git panel
+    registerGitPanel();
+
+    // Register Debug panel
+    registerDebugPanel();
+
+    // Register Terminal panel
+    registerTerminalPanel();
+
+    // Register Search panel
+    registerSearchPanel();
+
+    // Register File Explorer
+    registerFileExplorer();
+
+    // Register LSP integration for all languages
+    try {
+      const { registerLSPForAllLanguages } = await import('../../services/monacoLspIntegration');
+      registerLSPForAllLanguages();
+      console.log('[Workbench] LSP integration registered for all languages');
+    } catch (e) {
+      console.warn('[Workbench] Failed to register LSP integration:', e);
+    }
+
     // Register configure AI provider command
     try {
       await registerConfigureProviderCommand();
@@ -607,7 +636,7 @@ async function doInitializeWorkbench(container: HTMLElement): Promise<void> {
       console.warn('[Workbench] Failed to register configureAIProvider command:', e);
     }
 
-    // Register Blink AI as a chat agent for the auxiliary bar chat panel (right side)
+    // Register ElixirIDE AI as a chat agent for the auxiliary bar chat panel (right side)
     try {
       await registerAIChatAgent();
       console.log('[Workbench] AI chat agent registered');
@@ -622,6 +651,15 @@ async function doInitializeWorkbench(container: HTMLElement): Promise<void> {
       console.log('[Workbench] Model providers initialized');
     } catch (e) {
       console.warn('[Workbench] Failed to initialize model providers:', e);
+    }
+
+    // Initialize Core Engine Service (piscis-engine + SVM)
+    try {
+      const { coreEngine } = await import('../core-engine');
+      await coreEngine.initialize();
+      console.log('[Workbench] Core Engine initialized');
+    } catch (e) {
+      console.warn('[Workbench] Failed to initialize Core Engine:', e);
     }
 
     // Register Tab Autocomplete (Ghost Text) provider for AI code completions
@@ -715,12 +753,12 @@ async function doInitializeWorkbench(container: HTMLElement): Promise<void> {
         const svc: any = await getService(IWebviewWorkbenchService as any);
         const title = `Word: ${path.split('/').pop() || path}`;
         const init: WebviewInitInfo = {
-          id: `blink-word-${  Math.random().toString(36).slice(2)}`,
+          id: `elixide-word-${  Math.random().toString(36).slice(2)}`,
           options: { enableScripts: true },
           html: `<html><body><div id=doc></div><script>var vs=acquireVsCodeApi&&acquireVsCodeApi();window.addEventListener('message',e=>{var m=e.data||{};if(m.type==='render')document.getElementById('doc').innerHTML=m.html||''});vs&&vs.postMessage({type:'ready'})</script></body></html>`,
           extension: undefined as any,
         } as any;
-        const input = svc.openWebview(init as any, 'blink.wordEditor', title, undefined, { preserveFocus: false });
+        const input = svc.openWebview(init as any, 'elixide.wordEditor', title, undefined, { preserveFocus: false });
         const webview = (input as any).webview || (input && (input as any)._webview);
         const mod = await import('./testOpeners');
         const h = await mod.render(path);
@@ -782,12 +820,31 @@ async function doInitializeWorkbench(container: HTMLElement): Promise<void> {
       console.log('[Workbench] Continuing without extension host');
     }
 
-    // Inject Blink theme CSS overrides (red and yellow accents)
+    // Initialize Tauri search index
+    if (storedFolder) {
+      try {
+        await invoke('initialize_search', { workspaceRoot: storedFolder });
+        console.log('[Workbench] Tauri search index initialized');
+      } catch (e) {
+        console.warn('[Workbench] Failed to init Tauri search:', e);
+      }
+
+      // Initialize LSP for the workspace
+      try {
+        const { tauriLSPService } = await import('../../services/tauriLspService');
+        await tauriLSPService.initialize(storedFolder);
+        console.log('[Workbench] Tauri LSP service initialized');
+      } catch (e) {
+        console.warn('[Workbench] Failed to init Tauri LSP:', e);
+      }
+    }
+
+    // Inject ElixirIDE theme CSS overrides (red and yellow accents)
     const styleEl = document.createElement('style');
-    styleEl.id = 'blink-theme-overrides';
-    styleEl.textContent = getBlinkThemeCSS();
+    styleEl.id = 'elixide-theme-overrides';
+    styleEl.textContent = getElixirIDEThemeCSS();
     document.head.appendChild(styleEl);
-    console.log('[Workbench] Blink theme CSS injected');
+    console.log('[Workbench] ElixirIDE theme CSS injected');
 
     workbenchInitialized = true;
     console.log('[Workbench] VS Code workbench initialized successfully');

@@ -1,8 +1,8 @@
 /**
- * Blink Chat Entitlement Service
+ * ElixirIDE Chat Entitlement Service
  *
  * Custom implementation of IChatEntitlementService that bypasses VS Code's
- * default Copilot authentication UI and uses Blink AI instead.
+ * default Copilot authentication UI and uses ElixirIDE AI instead.
  *
  * This service tells VS Code that the user is "entitled" so it doesn't show
  * the GitHub/Google/Apple login overlay.
@@ -62,11 +62,11 @@ export class ChatEntitlementService extends Disposable implements IChatEntitleme
   }
 
   get organisations(): string[] | undefined {
-    return ['blink'];
+    return ['elixide'];
   }
 
   get sku(): string | undefined {
-    return 'blink-ai';
+    return 'elixide-ai';
   }
 
   get quotas(): IQuotas {

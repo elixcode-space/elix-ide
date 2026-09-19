@@ -2,7 +2,7 @@
  * AI Chat View Provider for VS Code Workbench
  *
  * Registers a custom view in the activity bar for AI chat functionality.
- * Uses Blink AI for AI responses.
+ * Uses ElixirIDE AI for AI responses.
  */
 
 import {
@@ -15,11 +15,11 @@ import type { IDisposable } from '@codingame/monaco-vscode-api/vscode/vs/base/co
 import { createUserMessage, createAssistantMessage, type ChatMessage } from '../aiChat';
 import { getAIService, isAIConfigured, promptConfigureAIProvider, type ConversationMessage } from './ai/chatService';
 
-const AI_CHAT_VIEW_ID = 'blink.aiChat';
+const AI_CHAT_VIEW_ID = 'elixide.aiChat';
 
 /**
  * Simple chat UI rendered in the VS Code sidebar
- * Uses Blink AI for AI responses
+ * Uses ElixirIDE AI for AI responses
  */
 class ChatViewUI {
   private container: HTMLElement;
@@ -213,18 +213,18 @@ class ChatViewUI {
 
     this.messagesContainer.innerHTML = `
       <div class="ai-chat-welcome">
-        <h3>Blink Code Assist</h3>
+        <h3>ElixirIDE Code Assist</h3>
         <p>Ask questions about your code, get help with debugging, or request code suggestions.</p>
         ${
           !isAuthenticated
             ? `
           <p style="margin-top: 12px; color: var(--vscode-editorWarning-foreground);">
-            Please log in to Blink Code Assist to use this feature.
+            Please log in to ElixirIDE Code Assist to use this feature.
           </p>
         `
             : `
           <p style="margin-top: 12px; color: var(--vscode-editorInfo-foreground);">
-            ✓ Connected to Blink Code Assist
+            ✓ Connected to ElixirIDE Code Assist
           </p>
         `
         }
@@ -237,7 +237,7 @@ class ChatViewUI {
       loginBtn.className = 'ai-chat-send-btn';
       loginBtn.style.margin = '12px auto';
       loginBtn.style.display = 'block';
-      loginBtn.textContent = 'Login to Blink Code Assist';
+      loginBtn.textContent = 'Login to ElixirIDE Code Assist';
       loginBtn.onclick = () => this.handleLogin();
       this.messagesContainer.querySelector('.ai-chat-welcome')?.appendChild(loginBtn);
       this.loginButton = loginBtn;

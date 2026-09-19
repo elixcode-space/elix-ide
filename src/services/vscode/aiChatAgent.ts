@@ -1,8 +1,8 @@
 /**
  * AI Chat Agent for VS Code Chat Panel
  *
- * Registers Blink Code Assist as a chat agent in the VS Code auxiliary bar.
- * This replaces the default "Build with Agent" welcome message with Blink AI.
+ * Registers ElixirIDE Code Assist as a chat agent in the VS Code auxiliary bar.
+ * This replaces the default "Build with Agent" welcome message with ElixirIDE AI.
  */
 
 import { getService } from '@codingame/monaco-vscode-api/services';
@@ -28,12 +28,12 @@ import { runAgentFromChat, cancelAgent, getCurrentAgentSession } from './agentMo
 import { runComposerFromChat, applyComposerFromChat, getCurrentComposerSession } from './multiFileEdit';
 import { handleRememberCommand, handleForgetCommand, handleRulesCommand, getContextForPrompt } from './persistentMemory';
 
-const AGENT_ID = 'blink-code-assist';
-const AGENT_NAME = 'Blink Code Assist';
+const AGENT_ID = 'elixide-ai';
+const AGENT_NAME = 'ElixirIDE Code Assist';
 
 /**
  * AI Chat Agent Implementation
- * Handles chat requests using Blink Code Assist
+ * Handles chat requests using ElixirIDE Code Assist
  */
 class AIChatAgentImpl implements IChatAgentImplementation {
   private aiService = getAIService();
@@ -406,14 +406,14 @@ class AIChatAgentImpl implements IChatAgentImplementation {
     if (!isAIConfigured()) {
       progress([{
         kind: 'markdownContent',
-        content: { value: '**Authentication Required**\n\nA browser window will open for Blink Code Assist authentication.\n\n*Please complete the sign-in process in your browser...*' },
+        content: { value: '**Authentication Required**\n\nA browser window will open for ElixirIDE AI authentication.\n\n*Please complete the sign-in process in your browser...*' },
       }]);
 
       try {
         await promptConfigureAIProvider();
         progress([{
           kind: 'markdownContent',
-          content: { value: '\n\n**Connected to Blink Code Assist**\n\n' },
+          content: { value: '\n\n**Connected to ElixirIDE Code Assist**\n\n' },
         }]);
       } catch (error) {
         const errorMessage = error instanceof Error ? error.message : String(error);
@@ -569,7 +569,7 @@ class AIChatAgentImpl implements IChatAgentImplementation {
  * Inject CSS to customize the chat panel for AI branding
  */
 function injectChatStyles(): void {
-  const styleId = 'blink-chat-styles';
+  const styleId = 'elixide-chat-styles';
   if (document.getElementById(styleId)) return;
 
   const style = document.createElement('style');
@@ -580,14 +580,14 @@ function injectChatStyles(): void {
       font-size: 0 !important;
     }
     #workbench\\.parts\\.auxiliarybar .chat-welcome-view-title::after {
-      content: "Blink Code Assist";
+      content: "ElixirIDE Code Assist";
       font-size: 20px;
     }
 
     /* Style the chat welcome icon */
     #workbench\\.parts\\.auxiliarybar .chat-welcome-view-icon .codicon-chat-sparkle::before {
       content: "\\eb99"; /* sparkle icon */
-      color: #c74634; /* Blink red */
+      color: #c74634; /* ElixirIDE red */
     }
 
     /* Update the disclaimer */
@@ -595,7 +595,7 @@ function injectChatStyles(): void {
       font-size: 0 !important;
     }
     #workbench\\.parts\\.auxiliarybar .chat-welcome-view-disclaimer::after {
-      content: "Powered by Blink Code Assist. Ask questions about your code.";
+      content: "Powered by ElixirIDE Code Assist. Ask questions about your code.";
       font-size: 12px;
       color: var(--vscode-descriptionForeground);
     }
@@ -1083,7 +1083,7 @@ async function registerGlobalSlashCommands(): Promise<IDisposable[]> {
 }
 
 /**
- * Register Blink Code Assist as a VS Code chat agent
+ * Register ElixirIDE Code Assist as a VS Code chat agent
  */
 export async function registerAIChatAgent(): Promise<IDisposable | null> {
   // Inject custom styles for AI branding
@@ -1103,20 +1103,20 @@ export async function registerAIChatAgent(): Promise<IDisposable | null> {
     const agentData: IChatAgentData = {
       id: AGENT_ID,
       name: AGENT_NAME,
-      fullName: 'Blink Code Assist',
-      description: 'AI coding assistant powered by Blink Code Assist',
-      extensionId: new ExtensionIdentifier('blink.code-assist'),
+      fullName: 'ElixirIDE Code Assist',
+      description: 'AI coding assistant powered by ElixirIDE Code Assist',
+      extensionId: new ExtensionIdentifier('elixide.code-assist'),
       extensionVersion: '1.0.0',
-      extensionPublisherId: 'blink',
-      extensionDisplayName: 'Blink Code Assist',
-      publisherDisplayName: 'Blink',
+      extensionPublisherId: 'elixide',
+      extensionDisplayName: 'ElixirIDE Code Assist',
+      publisherDisplayName: 'ElixirIDE',
       isDefault: true,
       isDynamic: true,
       isCore: false,
       metadata: {
         themeIcon: { id: 'sparkle' },
         sampleRequest: 'Explain this code',
-        helpTextPrefix: 'Ask Blink Code Assist about your code',
+        helpTextPrefix: 'Ask ElixirIDE Code Assist about your code',
         isSticky: true,
       },
       slashCommands: [
@@ -1145,7 +1145,7 @@ export async function registerAIChatAgent(): Promise<IDisposable | null> {
     const agentImpl = new AIChatAgentImpl();
 
     const agentDisposable = chatAgentService.registerDynamicAgent(agentData, agentImpl);
-    console.log('[AI Agent] Registered Blink Code Assist as chat agent');
+    console.log('[AI Agent] Registered ElixirIDE Code Assist as chat agent');
 
     // Mark as registered on window for testing
     (window as any).__AI_CHAT_AGENT_REGISTERED__ = true;

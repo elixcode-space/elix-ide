@@ -65,7 +65,7 @@ export interface StreamingCallbacks {
 }
 
 // System prompt exported for reference
-export const SYSTEM_PROMPT = `You are an AI coding assistant integrated into Blink, a desktop application for editing and working with files. You can help users:
+export const SYSTEM_PROMPT = `You are an AI coding assistant integrated into ElixirIDE, a desktop application for editing and working with files. You can help users:
 
 - Understand and explain code
 - Find and fix bugs
@@ -110,7 +110,7 @@ export class AIChatService {
 
   constructor(config: AIServiceConfig = {}) {
     this.config = {
-      modelId: config.modelId || 'blink-code-assist',
+      modelId: config.modelId || 'elixide-ai',
       maxTokens: config.maxTokens || 4096,
       temperature: config.temperature || 0.7,
     };

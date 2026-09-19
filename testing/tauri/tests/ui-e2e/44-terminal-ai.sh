@@ -278,7 +278,7 @@ test_08_working_directory() {
     echo "  Testing working directory context..."
 
     local result=$(test_js "(function() {
-        const cwd = localStorage.getItem('blink-workspace-folder') || '~';
+        const cwd = localStorage.getItem('elixide-workspace-folder') || '~';
         return cwd;
     })()")
 

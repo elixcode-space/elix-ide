@@ -1,6 +1,6 @@
-# Blink - AI Developer Documentation
+# ElixirIDE - AI Developer Documentation
 
-This documentation is for AI assistants helping develop Blink. It contains implementation details, feature status, and guidelines for development.
+This documentation is for AI assistants helping develop ElixirIDE. It contains implementation details, feature status, and guidelines for development.
 
 ---
 
@@ -45,7 +45,7 @@ This documentation is for AI assistants helping develop Blink. It contains imple
 | Document                                                             | Description                                         |
 | -------------------------------------------------------------------- | --------------------------------------------------- |
 | [plan/AI_IDE_ROADMAP.md](./plan/AI_IDE_ROADMAP.md)                   | AI IDE feature implementation roadmap (25-30 weeks) |
-| [plan/ai-integration-plan-v2.md](./plan/ai-integration-plan-v2.md) | Blink Code Assist integration (✅ COMPLETED)       |
+| [plan/ai-integration-plan-v2.md](./plan/ai-integration-plan-v2.md) | ElixirIDE Code Assist integration (✅ COMPLETED)       |
 | [plan/document-editing-plan.md](./plan/document-editing-plan.md)     | Office document editing implementation              |
 
 ## Quick Reference
@@ -53,7 +53,7 @@ This documentation is for AI assistants helping develop Blink. It contains imple
 ### Project Structure
 
 ```
-blink/
+elixide/
 ├── src/
 │   ├── components/         # React UI components
 │   │   ├── pages/IDE/      # Main IDE component (legacy)
@@ -200,4 +200,4 @@ AI is integrated via:
 - `src/services/vscode/ai/chatProvider.ts` - VS Code chat agent
 - `src/services/vscode/ai/configureProviderCommand.ts` - "Configure AI Provider" command
 
-Configuration: User runs "Blink: Configure AI Provider" from Command Palette, enters API key. Config stored in `localStorage` under `blink-ai-provider-config`.
+Configuration: User runs "ElixirIDE: Configure AI Provider" from Command Palette, enters API key. Config stored in `localStorage` under `elixide-ai-provider-config`.

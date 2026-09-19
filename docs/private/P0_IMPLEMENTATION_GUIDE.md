@@ -28,7 +28,7 @@ rustc --version
 # Expected: rustc 1.x.x
 
 # 3. Verify dependencies are installed
-cd /Users/briamart/github/blink
+cd /Users/briamart/github/elixide
 npm install
 
 # 4. Start the development server
@@ -445,7 +445,7 @@ fi
 
 ```bash
 # 1. Rebuild the frontend
-cd /Users/briamart/github/blink
+cd /Users/briamart/github/elixide
 npm run build
 
 # 2. Start dev server (if not running)
@@ -484,10 +484,10 @@ After implementation, verify these criteria:
 ```bash
 curl -X POST http://localhost:9999/js \
   -H "Content-Type: application/json" \
-  -d '{"code": "!!JSON.parse(localStorage.getItem(\"blink-ai-provider-config\") || \"null\")"}'
+  -d '{"code": "!!JSON.parse(localStorage.getItem(\"elixide-ai-provider-config\") || \"null\")"}'
 ```
 
-If `false`, open the Command Palette and run "Blink: Configure AI Provider".
+If `false`, open the Command Palette and run "ElixirIDE: Configure AI Provider".
 
 2. Check provider is registered:
 
@@ -567,7 +567,7 @@ async function showInlineEditInput(editor: vscode.TextEditor): Promise<string | 
  */
 async function getAIEdit(originalCode: string, instruction: string, languageId: string): Promise<string | null> {
   if (!isAIProviderConfigured()) {
-    vscode.window.showErrorMessage('No AI provider configured. Run "Blink: Configure AI Provider" from the Command Palette.');
+    vscode.window.showErrorMessage('No AI provider configured. Run "ElixirIDE: Configure AI Provider" from the Command Palette.');
     return null;
   }
 
@@ -696,7 +696,7 @@ export function registerInlineEdit(): void {
   disposables = [];
 
   // Register Ctrl+K command
-  const cmdDisposable = vscode.commands.registerCommand('blink.inlineEdit', executeInlineEdit);
+  const cmdDisposable = vscode.commands.registerCommand('elixide.inlineEdit', executeInlineEdit);
   disposables.push(cmdDisposable);
 
   // Register keybinding (Ctrl+K / Cmd+K)
@@ -737,8 +737,8 @@ The keybinding needs to be registered. Add to the workbench initialization:
 
 ```typescript
 // Register Ctrl+K keybinding
-vscode.commands.registerCommand('blink.triggerInlineEdit', () => {
-  vscode.commands.executeCommand('blink.inlineEdit');
+vscode.commands.registerCommand('elixide.triggerInlineEdit', () => {
+  vscode.commands.executeCommand('elixide.inlineEdit');
 });
 ```
 
@@ -790,7 +790,7 @@ test_01_ctrlk_opens_input() {
 
     # Trigger inline edit command
     test_js "
-        window.require('vscode').commands.executeCommand('blink.inlineEdit');
+        window.require('vscode').commands.executeCommand('elixide.inlineEdit');
         'triggered'
     "
 
@@ -1201,8 +1201,8 @@ Is the app running?
                  │       Rebuild and check console
                  │
                  └─ YES → Is AI provider configured?
-                          ├─ NO → Run "Blink: Configure AI Provider"
-                          │       Check localStorage: blink-ai-provider-config
+                          ├─ NO → Run "ElixirIDE: Configure AI Provider"
+                          │       Check localStorage: elixide-ai-provider-config
                           │
                           └─ YES → Check errors:
                                    curl http://localhost:9999/errors | jq .

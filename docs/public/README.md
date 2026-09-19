@@ -1,12 +1,12 @@
-# Blink IDE - User Guide
+# ElixirIDE IDE - User Guide
 
-Blink is a powerful desktop IDE built with Tauri that combines VS Code's editing experience with AI-powered assistance and native Office document support.
+ElixirIDE is a powerful desktop IDE built with Tauri that combines VS Code's editing experience with AI-powered assistance and native Office document support.
 
 ## Getting Started
 
 ### Opening a Project
 
-1. Launch Blink
+1. Launch ElixirIDE
 2. Use **File > Open Folder** or press `Cmd+O` to select a project folder
 3. The file explorer will show your project structure
 
@@ -57,7 +57,7 @@ Blink is a powerful desktop IDE built with Tauri that combines VS Code's editing
 
 ### Code Editing
 
-Blink provides a full VS Code editing experience:
+ElixirIDE provides a full VS Code editing experience:
 
 - **Syntax highlighting** for TypeScript, JavaScript, JSON, HTML, CSS, Markdown, and more
 - **IntelliSense** with auto-completion, parameter hints, and documentation
@@ -85,12 +85,12 @@ Popular extensions:
 
 ### AI Chat Assistant
 
-The AI Chat panel provides intelligent coding assistance powered by Blink Code Assist:
+The AI Chat panel provides intelligent coding assistance powered by ElixirIDE Code Assist:
 
 1. Toggle the panel with `Cmd+Shift+C`
 2. Type your question or request
 3. Reference open files using the context selector
-4. Blink Code Assist can:
+4. ElixirIDE Code Assist can:
    - Answer coding questions
    - Explain code
    - Suggest improvements
@@ -100,7 +100,7 @@ The AI Chat panel provides intelligent coding assistance powered by Blink Code A
 
 ### Office Document Support
 
-Blink can open and edit Microsoft Office documents:
+ElixirIDE can open and edit Microsoft Office documents:
 
 - **Word** (.docx) - View and edit documents
 - **Excel** (.xlsx) - View and edit spreadsheets

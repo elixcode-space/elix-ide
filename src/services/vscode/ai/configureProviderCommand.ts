@@ -1,7 +1,7 @@
 /**
  * Configure AI Provider Command
  *
- * Registers the 'blink.configureAIProvider' VSCode command.
+ * Registers the 'elixide.configureAIProvider' VSCode command.
  * Guides the user through picking a provider, entering an API key,
  * selecting a model, and (for custom providers) entering a base URL.
  */
@@ -23,7 +23,7 @@ export async function registerConfigureProviderCommand(): Promise<void> {
   try {
     const { commands, window } = await import('vscode');
 
-    commands.registerCommand('blink.configureAIProvider', async () => {
+    commands.registerCommand('elixide.configureAIProvider', async () => {
       // Step 1: Pick provider type
       const providerItems = [
         {
@@ -53,14 +53,14 @@ export async function registerConfigureProviderCommand(): Promise<void> {
         placeHolder: current
           ? `Current: ${PROVIDER_DEFAULTS[current.type]?.label ?? current.type} — ${current.model}`
           : 'Select an AI provider',
-        title: 'Blink: Configure AI Provider',
+        title: 'ElixirIDE: Configure AI Provider',
       });
 
       if (!picked) return;
 
       if (picked.value === '__clear__') {
         clearAIProviderConfig();
-        window.showInformationMessage('Blink: AI provider configuration cleared.');
+        window.showInformationMessage('ElixirIDE: AI provider configuration cleared.');
         return;
       }
 
@@ -69,7 +69,7 @@ export async function registerConfigureProviderCommand(): Promise<void> {
 
       // Step 2: Enter API key
       const apiKey = await window.showInputBox({
-        title: `Blink: ${defaults.label} API Key`,
+        title: `ElixirIDE: ${defaults.label} API Key`,
         prompt: `Paste your ${defaults.label} API key`,
         password: true,
         value: current?.type === providerType ? current.apiKey : '',
@@ -80,7 +80,7 @@ export async function registerConfigureProviderCommand(): Promise<void> {
 
       // Step 3: Model
       const modelValue = await window.showInputBox({
-        title: 'Blink: Model',
+        title: 'ElixirIDE: Model',
         prompt: 'Enter the model name to use',
         value: current?.type === providerType ? current.model : defaults.defaultModel,
         validateInput: (v) => (v.trim() ? null : 'Model cannot be empty'),
@@ -92,7 +92,7 @@ export async function registerConfigureProviderCommand(): Promise<void> {
       let baseUrl: string | undefined;
       if (providerType === 'custom') {
         const urlValue = await window.showInputBox({
-          title: 'Blink: Base URL',
+          title: 'ElixirIDE: Base URL',
           prompt: 'Enter the OpenAI-compatible base URL (e.g. http://localhost:11434)',
           value: current?.type === 'custom' ? (current.baseUrl ?? '') : '',
           validateInput: (v) => (v.trim() ? null : 'Base URL cannot be empty for custom providers'),
@@ -102,7 +102,7 @@ export async function registerConfigureProviderCommand(): Promise<void> {
       } else {
         // Optional override for Anthropic / OpenAI
         const urlValue = await window.showInputBox({
-          title: 'Blink: Base URL (optional)',
+          title: 'ElixirIDE: Base URL (optional)',
           prompt: `Leave blank to use the default ${defaults.baseUrl}`,
           value: current?.type === providerType ? (current.baseUrl ?? '') : '',
         });
@@ -118,12 +118,12 @@ export async function registerConfigureProviderCommand(): Promise<void> {
       });
 
       window.showInformationMessage(
-        `Blink: AI provider configured — ${defaults.label} / ${modelValue.trim()}`,
+        `ElixirIDE: AI provider configured — ${defaults.label} / ${modelValue.trim()}`,
       );
     });
 
-    console.log('[Blink] Registered blink.configureAIProvider command');
+    console.log('[ElixirIDE] Registered elixide.configureAIProvider command');
   } catch (e) {
-    console.error('[Blink] Failed to register configureAIProvider command:', e);
+    console.error('[ElixirIDE] Failed to register configureAIProvider command:', e);
   }
 }

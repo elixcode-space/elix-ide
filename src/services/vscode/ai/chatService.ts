@@ -1,5 +1,5 @@
 /**
- * Blink AI Chat Service
+ * ElixirIDE AI Chat Service
  *
  * Thin wrapper that exposes the same interface as the old chat service
  * but delegates all AI calls to aiProviderService (API-key based).
@@ -106,10 +106,10 @@ export function isAIConfigured(): boolean {
 export async function promptConfigureAIProvider(): Promise<void> {
   try {
     const { commands } = await import('vscode');
-    await commands.executeCommand('blink.configureAIProvider');
+    await commands.executeCommand('elixide.configureAIProvider');
   } catch {
     throw new Error(
-      'No AI provider configured. Open the Command Palette and run "Blink: Configure AI Provider".',
+      'No AI provider configured. Open the Command Palette and run "ElixirIDE: Configure AI Provider".',
     );
   }
 }

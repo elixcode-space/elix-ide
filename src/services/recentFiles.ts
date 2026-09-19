@@ -3,7 +3,7 @@
  * Tracks recently opened files in localStorage
  */
 
-const STORAGE_KEY = 'blink-recent-files';
+const STORAGE_KEY = 'elixide-recent-files';
 const MAX_RECENT_FILES = 15;
 
 export interface RecentFile {

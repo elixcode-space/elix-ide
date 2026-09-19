@@ -1,8 +1,8 @@
-# Blink Testing Architecture
+# ElixirIDE Testing Architecture
 
 ## Overview
 
-Blink includes a debug test server that enables automated E2E testing of the Tauri application. The test server runs on `http://localhost:9999` (configurable via `TAURI_TEST_PORT`) and provides HTTP endpoints to interact with the webview.
+ElixirIDE includes a debug test server that enables automated E2E testing of the Tauri application. The test server runs on `http://localhost:9999` (configurable via `TAURI_TEST_PORT`) and provides HTTP endpoints to interact with the webview.
 
 **Multi-Window Support:** The test server supports multiple windows. All endpoints accept a `?window=<label>` query parameter to target specific windows. If not specified, defaults to "main".
 
@@ -180,7 +180,7 @@ All endpoints support `?window=<label>` (defaults to "main")
 
 ```bash
 curl http://localhost:9999/windows
-# {"windows":[{"label":"main","title":"Blink","folder":null,"is_visible":true,"is_focused":true,"bridge_injected":true}],"count":1,"active":"main"}
+# {"windows":[{"label":"main","title":"ElixirIDE","folder":null,"is_visible":true,"is_focused":true,"bridge_injected":true}],"count":1,"active":"main"}
 ```
 
 ### Open Context Window
@@ -508,7 +508,7 @@ scripts/
 
 - Check if Tauri app is running: `lsof -i:9999`
 - Check if webpack is ready: look for "compiled successfully" in terminal
-- Try restarting: `pkill -f blink && npm run tauri:dev`
+- Try restarting: `pkill -f elixide && npm run tauri:dev`
 
 ### Context window not opening
 

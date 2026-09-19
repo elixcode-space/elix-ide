@@ -256,7 +256,7 @@ Example document edit:
 }
 
 // System prompt for the AI assistant
-const SYSTEM_PROMPT = `You are an AI coding assistant integrated into Blink, a desktop application for editing and working with files. You have FULL ACCESS to read and modify files in the user's project directory.
+const SYSTEM_PROMPT = `You are an AI coding assistant integrated into ElixirIDE, a desktop application for editing and working with files. You have FULL ACCESS to read and modify files in the user's project directory.
 
 ## Your Capabilities
 

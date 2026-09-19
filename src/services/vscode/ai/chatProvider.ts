@@ -20,8 +20,8 @@ import { getAIProviderConfig, PROVIDER_DEFAULTS } from './aiProviderService';
 // ============================================================================
 
 export class AIModelProvider implements ModelProvider {
-  readonly id = 'blink-ai';
-  readonly name = 'Blink AI';
+  readonly id = 'elixide-ai';
+  readonly name = 'ElixirIDE AI';
 
   private service: AIService;
 
@@ -40,7 +40,7 @@ export class AIModelProvider implements ModelProvider {
   async authenticate(): Promise<void> {
     if (!this.service.isConfigured()) {
       throw new Error(
-        'No AI provider configured. Open the Command Palette and run "Blink: Configure AI Provider".',
+        'No AI provider configured. Open the Command Palette and run "ElixirIDE: Configure AI Provider".',
       );
     }
   }

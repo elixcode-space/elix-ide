@@ -1,8 +1,8 @@
-# Blink - Development Guide
+# ElixirIDE - Development Guide
 
 ## Prerequisites
 
-Before developing Blink, ensure you have:
+Before developing ElixirIDE, ensure you have:
 
 | Requirement | Version       | Check Command           |
 | ----------- | ------------- | ----------------------- |
@@ -32,7 +32,7 @@ node --version  # Should be >= 18.0.0
 ```bash
 # Clone the repository
 git clone <repo-url>
-cd blink
+cd elixide
 
 # Install dependencies
 npm install
@@ -202,8 +202,8 @@ npm run tauri:build
 
 | Platform  | Location                        |
 | --------- | ------------------------------- |
-| macOS     | `bundle/macos/Blink.app` |
-| macOS DMG | `bundle/dmg/Blink.dmg`   |
+| macOS     | `bundle/macos/ElixirIDE.app` |
+| macOS DMG | `bundle/dmg/ElixirIDE.dmg`   |
 | Windows   | `bundle/msi/` (not tested)      |
 | Linux     | `bundle/appimage/` (not tested) |
 
@@ -262,7 +262,7 @@ curl -X POST http://localhost:9999/js \
 
 ```bash
 # Kill existing processes
-pkill -f "blink"
+pkill -f "elixide"
 
 # Restart
 npm run tauri:dev
@@ -272,11 +272,11 @@ npm run tauri:dev
 
 ```bash
 # Clear extension storage
-rm -rf ~/.blink/extensions/
-rm -f ~/.blink/extensions.json
+rm -rf ~/.elixide/extensions/
+rm -f ~/.elixide/extensions.json
 
 # Clear settings
-rm -f ~/.blink/settings.json
+rm -f ~/.elixide/settings.json
 
 # Clear workspace memory
 # (stored in localStorage, cleared by app or browser dev tools)
@@ -301,7 +301,7 @@ lsof -i:9999  # Test server
 
 # Kill stuck processes
 pkill -f webpack
-pkill -f blink
+pkill -f elixide
 ```
 
 ### Tests timeout waiting for workbench
@@ -327,7 +327,7 @@ curl -X POST http://localhost:9999/extensions/host/restart
 ### Hot reload not working
 
 1. Check webpack terminal for errors
-2. Try full restart: `pkill -f blink && npm run tauri:dev`
+2. Try full restart: `pkill -f elixide && npm run tauri:dev`
 3. Clear browser cache in webview (if possible)
 
 ## Code Quality
@@ -378,8 +378,8 @@ npm run build
 │ Console logs:  curl http://localhost:9999/console       │
 │ JS errors:     curl http://localhost:9999/errors        │
 ├─────────────────────────────────────────────────────────┤
-│ Kill app:      pkill -f blink                    │
-│ Clear state:   rm -rf ~/.blink/                  │
+│ Kill app:      pkill -f elixide                    │
+│ Clear state:   rm -rf ~/.elixide/                  │
 └─────────────────────────────────────────────────────────┘
 ```
 

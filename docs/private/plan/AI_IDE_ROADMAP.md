@@ -1,4 +1,4 @@
-# Blink: AI IDE Feature Roadmap
+# ElixirIDE: AI IDE Feature Roadmap
 
 **Last Updated**: January 2026
 **Estimated Time to Cursor/Windsurf Parity**: 25-30 weeks (optimistic) / 40-50 weeks (realistic)
@@ -249,7 +249,7 @@ Node.js debug adapter (js-debug) requires Node.js runtime. Use existing sidecar.
 #### Frontend Implementation
 
 ```typescript
-const controller = vscode.tests.createTestController('blink', 'Blink Tests');
+const controller = vscode.tests.createTestController('elixide', 'ElixirIDE Tests');
 
 controller.resolveHandler = async (item) => {
   // Call Tauri backend for test discovery
@@ -309,7 +309,7 @@ controller.createRunProfile('Run', vscode.TestRunProfileKind.Run, async (request
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                           Blink (Tauri v2)                       │
+│                           ElixirIDE (Tauri v2)                       │
 │  ┌───────────────────────────────────────────────────────────┐  │
 │  │              WebView + monaco-vscode-api                   │  │
 │  │  - Web Worker Extension Host (themes, grammars, snippets) │  │

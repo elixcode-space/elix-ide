@@ -3,7 +3,7 @@
 # AI Comprehensive User-Centric E2E Tests
 # ============================================================================
 #
-# This test suite provides comprehensive, user-centric testing of the Blink
+# This test suite provides comprehensive, user-centric testing of the ElixirIDE
 # Code Assist chat functionality. Tests cover the full user journey from
 # opening the chat panel to receiving AI responses.
 #

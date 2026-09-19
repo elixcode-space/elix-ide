@@ -7,8 +7,10 @@ pub mod channel;
 pub mod extension_host_channel;
 pub mod messages;
 pub mod router;
+// pub mod v2_streaming;
 
 pub use channel::*;
 pub use extension_host_channel::*;
 pub use messages::*;
 pub use router::*;
+// pub use v2_streaming::*;

@@ -1,4 +1,4 @@
-# Blink - Technical Debt & Code Health Report
+# ElixirIDE - Technical Debt & Code Health Report
 
 **Last Updated**: January 2026
 **Assessment Grade**: D+ (Functional but Fragile)

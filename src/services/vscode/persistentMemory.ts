@@ -2,13 +2,13 @@
  * Persistent Memory / Rules Service
  *
  * Enables persistent project-specific rules and context that the AI remembers.
- * Uses .blinkrules and .blinkmem files in the workspace root.
+ * Uses .elixiderules and .elixidmem files in the workspace root.
  *
  * P1 Feature - Persistent Memory/Rules
  *
  * Features:
- *   - .blinkrules - Project-specific instructions for the AI
- *   - .blinkmem - Conversation memory/learned context
+ *   - .elixiderules - Project-specific instructions for the AI
+ *   - .elixidmem - Conversation memory/learned context
  *   - Automatic context injection into prompts
  *   - Memory management commands
  */
@@ -57,8 +57,8 @@ export interface ProjectMemory {
 }
 
 // File paths
-const RULES_FILE = '.blinkrules';
-const MEMORY_FILE = '.blinkmem';
+const RULES_FILE = '.elixiderules';
+const MEMORY_FILE = '.elixidmem';
 
 // Cache
 let cachedRules: ProjectRules | null = null;
@@ -73,7 +73,7 @@ let workspacePath: string | null = null;
  * Get workspace folder path
  */
 function getWorkspaceFolder(): string | null {
-  return localStorage.getItem('blink-workspace-folder');
+  return localStorage.getItem('elixide-workspace-folder');
 }
 
 /**
@@ -115,7 +115,7 @@ function getDefaultRules(): ProjectRules {
 }
 
 /**
- * Load project rules from .blinkrules file
+ * Load project rules from .elixiderules file
  */
 export async function loadProjectRules(): Promise<ProjectRules> {
   if (cachedRules) {
@@ -162,7 +162,7 @@ export async function loadProjectRules(): Promise<ProjectRules> {
 }
 
 /**
- * Save project rules to .blinkrules file
+ * Save project rules to .elixiderules file
  */
 export async function saveProjectRules(rules: ProjectRules): Promise<boolean> {
   const workspace = workspacePath || getWorkspaceFolder();
@@ -245,7 +245,7 @@ function getDefaultMemory(): ProjectMemory {
 }
 
 /**
- * Load project memory from .blinkmem file
+ * Load project memory from .elixidmem file
  */
 export async function loadProjectMemory(): Promise<ProjectMemory> {
   if (cachedMemory) {
@@ -277,7 +277,7 @@ export async function loadProjectMemory(): Promise<ProjectMemory> {
 }
 
 /**
- * Save project memory to .blinkmem file
+ * Save project memory to .elixidmem file
  */
 export async function saveProjectMemory(memory: ProjectMemory): Promise<boolean> {
   const workspace = workspacePath || getWorkspaceFolder();
@@ -485,7 +485,7 @@ export async function handleRulesCommand(args?: string): Promise<string> {
   if (!args || args.trim() === 'show') {
     const rules = await loadProjectRules();
     const formatted = formatRulesForPrompt(rules);
-    return `**Current Project Rules:**\n\n${formatted}\n\n*Edit \`.blinkrules\` in your workspace root to customize.*`;
+    return `**Current Project Rules:**\n\n${formatted}\n\n*Edit \`.elixiderules\` in your workspace root to customize.*`;
   }
 
   if (args.trim() === 'reset') {

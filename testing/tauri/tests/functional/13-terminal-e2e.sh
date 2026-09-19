@@ -1,5 +1,5 @@
 #!/bin/bash
-# End-to-end terminal tests for Blink
+# End-to-end terminal tests for ElixirIDE
 # Comprehensive tests to verify the terminal integration is working
 
 source "$(dirname "$0")/../lib/test-client.sh"

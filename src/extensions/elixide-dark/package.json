@@ -1,0 +1,20 @@
+{
+  "name": "elixide-dark-theme",
+  "displayName": "ElixirIDE Dark",
+  "description": "Dark theme with ElixirIDE brand colors",
+  "version": "1.0.0",
+  "publisher": "elixide",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": ["Themes"],
+  "contributes": {
+    "themes": [
+      {
+        "label": "ElixirIDE Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/elixide-dark.json"
+      }
+    ]
+  }
+}

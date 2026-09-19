@@ -27,7 +27,7 @@ import { join } from '@tauri-apps/api/path';
 
 // For workspace folder access, we'll use a different approach
 const getWorkspaceFolder = (): string | null => {
-  return localStorage.getItem('blink-workspace-folder');
+  return localStorage.getItem('elixide-workspace-folder');
 };
 
 // ============================================================================

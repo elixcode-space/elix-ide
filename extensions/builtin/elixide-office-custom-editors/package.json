@@ -1,0 +1,64 @@
+{
+  "name": "elixide-office-custom-editors",
+  "displayName": "ElixirIDE Office Custom Editors",
+  "publisher": "elixide",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCustomEditor:elixide.docxBinary",
+    "onCustomEditor:elixide.xlsxBinary",
+    "onCustomEditor:elixide.pptxBinary"
+  ],
+  "main": "dist/extension.js",
+  "browser": "dist/extension.js",
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "elixide.docxBinary",
+        "displayName": "ElixirIDE DOCX Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.docx"
+          }
+        ],
+        "priority": "default"
+      },
+      {
+        "viewType": "elixide.xlsxBinary",
+        "displayName": "ElixirIDE XLSX Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.xlsx"
+          }
+        ],
+        "priority": "default"
+      },
+      {
+        "viewType": "elixide.pptxBinary",
+        "displayName": "ElixirIDE PPTX Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.pptx"
+          }
+        ],
+        "priority": "default"
+      }
+    ]
+  },
+  "description": "ElixirIDE Office Custom Editors (DOCX/XLSX/PPTX)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/vscode": "^1.107.0",
+    "esbuild": "^0.27.2"
+  }
+}

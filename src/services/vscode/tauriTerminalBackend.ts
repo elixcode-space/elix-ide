@@ -24,18 +24,51 @@ import type {
 import type { IProcessEnvironment } from '@codingame/monaco-vscode-api/vscode/vs/base/common/platform';
 
 // Types matching Rust terminal commands
-interface TerminalInfo {
+interface TerminalInstance {
   id: string;
-  shell: string;
+  title: string;
   cwd: string;
+  shell: string;
   cols: number;
   rows: number;
+  pid?: number;
+  isActive: boolean;
+  createdAt: string;
+  lastActivity: string;
+}
+
+interface TerminalCreateOptions {
+  cwd?: string;
+  shell?: string;
+  cols: number;
+  rows: number;
+  env?: Record<string, string>;
+  title?: string;
+}
+
+interface TerminalResizeOptions {
+  cols: number;
+  rows: number;
+}
+
+interface TerminalWriteOptions {
+  data: string;
 }
 
 interface ShellInfo {
   name: string;
   path: string;
   isDefault: boolean;
+}
+
+interface TerminalProfile {
+  name: string;
+  shell: string;
+  args: string[];
+  env: Record<string, string>;
+  cwd?: string;
+  icon?: string;
+  colorScheme?: string;
 }
 
 // Create emitters outside the class for use in constructor
@@ -127,8 +160,8 @@ class TauriTerminalProcess extends SimpleTerminalProcess {
   }
 
   input(data: string): void {
-    invoke('write_to_terminal', {
-      terminalId: this.terminalId,
+    invoke('terminal_write', {
+      id: this.terminalId,
       data,
     }).catch((error) => {
       console.error('[TauriTerminalProcess] Failed to write:', error);
@@ -136,8 +169,8 @@ class TauriTerminalProcess extends SimpleTerminalProcess {
   }
 
   resize(cols: number, rows: number): void {
-    invoke('resize_terminal', {
-      terminalId: this.terminalId,
+    invoke('terminal_resize', {
+      id: this.terminalId,
       cols,
       rows,
     }).catch((error) => {
@@ -146,7 +179,7 @@ class TauriTerminalProcess extends SimpleTerminalProcess {
   }
 
   shutdown(_immediate: boolean): void {
-    invoke('kill_terminal', { terminalId: this.terminalId }).catch((error) => {
+    invoke('terminal_kill', { id: this.terminalId }).catch((error) => {
       console.error('[TauriTerminalProcess] Failed to kill:', error);
     });
     this.cleanup();
@@ -215,11 +248,13 @@ export class TauriTerminalBackend extends SimpleTerminalBackend {
       console.log('[TauriTerminalBackend] Spawning terminal with shell:', shell);
 
       // Spawn terminal in Tauri backend
-      const info = await invoke<TerminalInfo>('spawn_terminal', {
-        shell,
-        cwd: cwd || undefined,
-        cols,
-        rows,
+      const info = await invoke<TerminalInstance>('terminal_create', {
+        options: {
+          cwd: cwd || undefined,
+          shell,
+          cols,
+          rows,
+        },
       });
 
       console.log('[TauriTerminalBackend] Terminal spawned:', info);
@@ -228,7 +263,7 @@ export class TauriTerminalBackend extends SimpleTerminalBackend {
       const process = TauriTerminalProcess.create(
         id,
         info.id,
-        parseInt(info.id.replace('term-', ''), 10) || id,
+        info.pid || id,
         info.cwd
       );
 

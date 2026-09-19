@@ -1,7 +1,7 @@
 /**
  * Tab Autocomplete Provider (Ghost Text)
  *
- * Provides inline completion suggestions using Blink Code Assist.
+ * Provides inline completion suggestions using ElixirIDE Code Assist.
  * Shows "ghost text" that can be accepted with Tab or dismissed with Escape.
  *
  * P0 Feature - Critical for AI IDE functionality

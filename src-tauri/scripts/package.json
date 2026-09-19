@@ -1,7 +1,7 @@
 {
-  "name": "blink-pptx-service",
+  "name": "elixide-pptx-service",
   "version": "1.0.0",
-  "description": "PowerPoint processing service for Blink",
+  "description": "PowerPoint processing service for ElixirIDE",
   "main": "pptx-service.js",
   "scripts": {
     "start": "node pptx-service.js",

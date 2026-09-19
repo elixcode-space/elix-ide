@@ -42,8 +42,8 @@ export class OpenAIModelProvider implements ModelProvider {
   private currentAbortController: AbortController | null = null;
 
   /** Storage keys */
-  private readonly API_KEY_STORAGE = 'blink-openai-api-key';
-  private readonly MODEL_STORAGE = 'blink-openai-model';
+  private readonly API_KEY_STORAGE = 'elixide-openai-api-key';
+  private readonly MODEL_STORAGE = 'elixide-openai-model';
 
   constructor() {
     // Load saved config from localStorage

@@ -61,7 +61,7 @@ let currentSession: ComposerSession | null = null;
  * Get workspace folder path
  */
 function getWorkspaceFolder(): string | null {
-  return localStorage.getItem('blink-workspace-folder');
+  return localStorage.getItem('elixide-workspace-folder');
 }
 
 /**
@@ -486,7 +486,7 @@ export async function applyComposerFromChat(
 class ComposerAction extends Action2 {
   constructor() {
     super({
-      id: 'blink.composer',
+      id: 'elixide.composer',
       title: { value: 'AI: Multi-file Edit (Composer)', original: 'AI: Multi-file Edit (Composer)' },
       category: { value: 'AI', original: 'AI' },
       f1: true,

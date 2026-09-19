@@ -1,6 +1,6 @@
 # Tauri E2E Testing
 
-End-to-end testing utilities for Blink Tauri application.
+End-to-end testing utilities for ElixirIDE Tauri application.
 
 ## Quick Start
 

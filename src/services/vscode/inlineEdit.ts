@@ -104,7 +104,7 @@ Modified code:`;
 class InlineEditAction extends Action2 {
   constructor() {
     super({
-      id: 'blink.inlineEdit',
+      id: 'elixide.inlineEdit',
       title: { value: 'Inline Edit with AI', original: 'Inline Edit with AI' },
       category: { value: 'AI', original: 'AI' },
       f1: true,

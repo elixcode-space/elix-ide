@@ -1,28 +1,53 @@
 [package]
-name = "blink"
+name = "elixide"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "ElixIDE - AI-powered agentic IDE"
+authors = ["ElixCode Space"]
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+default-run = "elixide"
+repository = "https://github.com/elixcode-space/elix-ide"
+homepage = "https://elixcode.space"
 
 [lib]
-# The `_lib` suffix may seem redundant but it is necessary
-# to make the lib name unique and wouldn't conflict with the bin name.
-# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
-name = "blink_lib"
+name = "elixide_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "elixide-core"
+path = "src/bin/unikernel_bin.rs"
+required-features = ["unikernel"]
 
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
 
+[features]
+unikernel = []
+default = ["desktop"]
+desktop = [
+    "tauri",
+    "tauri-plugin-opener",
+    "tauri-plugin-dialog",
+    "tauri-plugin-fs",
+    "tauri-plugin-updater",
+    "tauri-plugin-store",
+    "tauri-plugin-sql/sqlite",
+    "tauri-plugin-clipboard-manager",
+    "tauri-plugin-shell",
+    "portable-pty",
+    "parking_lot",
+]
+
 [dependencies]
-tauri = { version = "2", features = [] }
-tauri-plugin-opener = "2"
-tauri-plugin-dialog = "2"
-tauri-plugin-fs = "2"
-tauri-plugin-updater = "2"
+tauri = { version = "2", features = [], optional = true }
+tauri-plugin-opener = { version = "2", optional = true }
+tauri-plugin-dialog = { version = "2", optional = true }
+tauri-plugin-fs = { version = "2", optional = true }
+tauri-plugin-updater = { version = "2", optional = true }
+tauri-plugin-store = { version = "2", optional = true }
+tauri-plugin-sql = { version = "2", features = ["sqlite"], optional = true }
+tauri-plugin-clipboard-manager = { version = "2", optional = true }
+tauri-plugin-shell = { version = "2", optional = true }
+log = "0.4"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 
@@ -39,7 +64,7 @@ tokio = { version = "1", features = ["full"] }
 thiserror = "1"
 
 # Test server (debug builds only)
-axum = "0.7"
+axum = { version = "0.7", features = ["ws"] }
 tower = "0.5"
 tower-http = { version = "0.5", features = ["cors"] }
 urlencoding = "2"
@@ -50,17 +75,53 @@ open = "5"
 which = "7"
 
 # Terminal/PTY support
-portable-pty = "0.8"
-parking_lot = "0.12"
-
-# Shell/process spawning for sidecar
-tauri-plugin-shell = "2"
+portable-pty = { version = "0.8", optional = true }
+parking_lot = { version = "0.12", optional = true }
 
 # OpenVSCode server implementation
 chrono = "0.4"
 async-trait = "0.1"
 uuid = { version = "1", features = ["v4"] }
 
+# Core Engine (piscis-engine)
+piscis-core = { git = "https://github.com/njbinbin-piscis/piscis-engine", branch = "main" }
+piscis-kernel = { git = "https://github.com/njbinbin-piscis/piscis-engine", branch = "main" }
+once_cell = "1.19"
+futures-util = "0.3"
+
+# SVM Inference
+libsvm-rs = { version = "0.3", features = ["rayon"] }
+
+# Phase 1: Search/Indexing (tantivy/lnx patterns)
+tantivy = { version = "0.26", features = ["stemmer", "mmap", "lz4-compression", "stopwords"] }
+walkdir = "2.5"
+ignore = "0.4"
+regex = "1.10"
+dirs = "5.0"
+glob = "0.3"
+
+# Phase 1: LSP (tower-lsp)
+tower-lsp = "0.20"
+lsp-types = "0.94"
+tokio-util = { version = "0.7", features = ["codec"] }
+url = "2.5"
+
+# Phase 1: Git
+git2 = "0.18"
+
+# Phase 1: File watching
+notify = { version = "6", features = ["fsevent-sys"] }
+
+# Utilities
+anyhow = "1.0"
+tracing = "0.1"
+flate2 = "1.0"
+lazy_static = "1.4"
+
 [dev-dependencies]
 tempfile = "3"
+criterion = { version = "0.5", features = ["html_reports"] }
 
+[[bench]]
+name = "core_engine_bench"
+harness = false

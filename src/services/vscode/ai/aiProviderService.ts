@@ -2,10 +2,10 @@
  * Generic AI Provider Service
  *
  * Supports Anthropic, OpenAI, and any OpenAI-compatible provider via API key.
- * Config is stored in localStorage and managed via the "Blink: Configure AI Provider" command.
+ * Config is stored in localStorage and managed via the "ElixirIDE: Configure AI Provider" command.
  */
 
-const STORAGE_KEY = 'blink-ai-provider-config';
+const STORAGE_KEY = 'elixide-ai-provider-config';
 
 export type ProviderType = 'anthropic' | 'openai' | 'custom';
 
@@ -86,7 +86,7 @@ export async function streamChat(
   const config = getAIProviderConfig();
   if (!config?.apiKey) {
     callbacks.onError(
-      new Error('No AI provider configured. Open the Command Palette and run "Blink: Configure AI Provider".'),
+      new Error('No AI provider configured. Open the Command Palette and run "ElixirIDE: Configure AI Provider".'),
     );
     return '';
   }

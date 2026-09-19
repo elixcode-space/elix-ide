@@ -97,7 +97,7 @@ class ModelProviderRegistry {
   private activeProviderId: string | null = null;
 
   /** Storage key for active provider */
-  private readonly STORAGE_KEY = 'blink-active-model-provider';
+  private readonly STORAGE_KEY = 'elixide-active-model-provider';
 
   constructor() {
     // Load saved active provider preference

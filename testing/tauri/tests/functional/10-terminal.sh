@@ -1,5 +1,5 @@
 #!/bin/bash
-# Terminal integration tests for Blink
+# Terminal integration tests for ElixirIDE
 # Tests the VS Code workbench terminal with Tauri PTY backend
 
 source "$(dirname "$0")/../lib/test-client.sh"

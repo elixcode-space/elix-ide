@@ -11,7 +11,7 @@ import type { IDisposable } from '@codingame/monaco-vscode-api/vscode/vs/base/co
 
 // XLSX Editor Input - represents an Excel file in the editor
 class XlsxEditorInput extends SimpleEditorInput {
-  static readonly ID = 'blink.xlsxEditorInput';
+  static readonly ID = 'elixide.xlsxEditorInput';
   private _path: string;
 
   constructor(resource: URI) {
@@ -33,7 +33,7 @@ class XlsxEditorInput extends SimpleEditorInput {
 
 // XLSX Editor Pane - renders the Excel content
 class XlsxEditorPane extends SimpleEditorPane {
-  static readonly ID = 'blink.xlsxEditorPane';
+  static readonly ID = 'elixide.xlsxEditorPane';
   private docContainer: HTMLDivElement | null = null;
   private currentPath: string | null = null;
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Editor functionality tests for Blink Tauri application
+# Editor functionality tests for ElixirIDE Tauri application
 # These tests verify the Monaco editor integration
 
 source "$(dirname "$0")/../lib/test-client.sh"

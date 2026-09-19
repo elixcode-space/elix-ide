@@ -1,4 +1,4 @@
-# Blink - Implementation Guidelines
+# ElixirIDE - Implementation Guidelines
 
 ## Development Workflow
 
@@ -155,7 +155,7 @@ test_01_my_button_works() {
 
 ---
 
-## Blink Code Assist (AI) Integration
+## ElixirIDE Code Assist (AI) Integration
 
 > **Note**: AI integration is COMPLETE. See `ai-integration-plan-v2.md` for implementation details.
 
@@ -169,8 +169,8 @@ test_01_my_button_works() {
 │  │  (VS Code Chat) │     │ (BYOK API client)      │            │
 │  └─────────────────┘     └────────────────────────┘            │
 │                                                                  │
-│  Config stored in localStorage (blink-ai-provider-config)       │
-│  Managed via "Blink: Configure AI Provider" command             │
+│  Config stored in localStorage (elixide-ai-provider-config)       │
+│  Managed via "ElixirIDE: Configure AI Provider" command             │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -184,10 +184,10 @@ test_01_my_button_works() {
 
 ### Configuration Flow
 
-1. User opens Command Palette → "Blink: Configure AI Provider"
+1. User opens Command Palette → "ElixirIDE: Configure AI Provider"
 2. Selects provider: Anthropic, OpenAI, or custom OpenAI-compatible
 3. Enters API key and model name
-4. Config stored in `localStorage` under `blink-ai-provider-config`
+4. Config stored in `localStorage` under `elixide-ai-provider-config`
 5. `isAIProviderConfigured()` returns `true`
 6. `streamChat()` is ready for requests
 

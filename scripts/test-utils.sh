@@ -1,5 +1,5 @@
 #!/bin/bash
-# Test utilities for Blink debug test server
+# Test utilities for ElixirIDE debug test server
 # Usage: ./scripts/test-utils.sh <command> [args...]
 
 TEST_SERVER="http://localhost:9999"
@@ -117,7 +117,7 @@ workbench_loaded() {
 
 # Run a simple test suite
 run_tests() {
-    echo "=== Blink Test Suite ==="
+    echo "=== ElixirIDE Test Suite ==="
     echo ""
 
     echo "1. Checking server..."
@@ -161,7 +161,7 @@ run_tests() {
 # Show help
 show_help() {
     cat << EOF
-Blink Test Utilities
+ElixirIDE Test Utilities
 
 Usage: $0 <command> [args...]
 

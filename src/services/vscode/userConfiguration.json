@@ -13,7 +13,7 @@
   "editor.renderWhitespace": "selection",
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": true,
-  "editor.cursorBlinking": "blink",
+  "editor.cursorElixirIDEing": "elixide",
   "editor.cursorStyle": "line",
   "editor.smoothScrolling": true,
   "editor.mouseWheelZoom": true,

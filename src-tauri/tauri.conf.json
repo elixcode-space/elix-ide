@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "blink",
+  "productName": "ElixIDE",
   "version": "0.1.0",
-  "identifier": "com.blink.app",
+  "identifier": "com.elixcode.elixide",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -12,9 +12,16 @@
   "app": {
     "windows": [
       {
-        "title": "blink",
+        "title": "ElixIDE",
         "width": 1200,
-        "height": 800
+        "height": 800,
+        "minWidth": 800,
+        "minHeight": 600,
+        "center": true,
+        "resizable": true,
+        "fullscreen": false,
+        "decorations": true,
+        "transparent": false
       }
     ],
     "security": {
@@ -34,14 +41,79 @@
     ],
     "resources": [
       "binaries/*"
-    ]
+    ],
+    "macOS": {
+      "minimumSystemVersion": "10.15"
+    },
+    "windows": {},
+    "linux": {
+      "deb": {
+        "depends": [
+          "libgtk-3-0",
+          "libwebkit2gtk-4.1-0",
+          "libayatana-appindicator3-1",
+          "librsvg2-common"
+        ],
+        "section": "devel",
+        "priority": "optional",
+        "files": {}
+      },
+      "appimage": {
+        "bundleMediaFramework": true
+      },
+      "rpm": {
+        "files": {}
+      }
+    }
   },
   "plugins": {
     "updater": {
       "endpoints": [
-        "https://updates.blink.app/blink/{{target}}/{{arch}}/{{current_version}}"
+        "https://updates.elixcode.space/{{target}}/{{arch}}/{{current_version}}"
       ],
-      "pubkey": ""
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbiBzaWduYXR1cmUgc2l6ZTogNQpSV1pKRGVRN3BvYkp2MWt6VlRNa0ZscDNDNjJ3VEdnWlJ3dFYzWVk0RzZYcFlNRHNPR0JCQ0J2eAp4bzhwTlVFZ2VqSlR0Zk1qWVhXK2R0YzFnY0x1T2xHYkJrNlZqNkxJT0V5ZDJYa3JxZ01zSUZpZ3dMCg==",
+      "dialog": true
+    },
+    "shell": {
+      "scope": {
+        "allowlist": [
+          {
+            "name": "git",
+            "cmd": "git",
+            "args": true
+          },
+          {
+            "name": "node",
+            "cmd": "node",
+            "args": true
+          },
+          {
+            "name": "npm",
+            "cmd": "npm",
+            "args": true
+          },
+          {
+            "name": "python",
+            "cmd": "python3",
+            "args": true
+          },
+          {
+            "name": "pip",
+            "cmd": "pip3",
+            "args": true
+          },
+          {
+            "name": "go",
+            "cmd": "go",
+            "args": true
+          },
+          {
+            "name": "cargo",
+            "cmd": "cargo",
+            "args": true
+          }
+        ]
+      }
     }
   }
 }

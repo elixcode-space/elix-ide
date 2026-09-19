@@ -31,12 +31,12 @@ export async function attachTestOpeners(): Promise<void> {
   (window as any).__TEST_OPEN_DOCX__ = async (path: string) => {
     const title = `Word: ${path.split('/').pop() || path}`;
     const init: WebviewInitInfo = {
-      id: 'blink-word-' + Math.random().toString(36).slice(2),
+      id: 'elixide-word-' + Math.random().toString(36).slice(2),
       options: { enableScripts: true },
       html: html('*', title),
       extension: undefined as any,
     } as any;
-    const input = webviewSvc.openWebview(init as any, 'blink.wordEditor', title, undefined, { preserveFocus: false });
+    const input = webviewSvc.openWebview(init as any, 'elixide.wordEditor', title, undefined, { preserveFocus: false });
     const webview = (input as any).webview || (input && (input as any)._webview);
     const doUpdate = async () => {
       try {

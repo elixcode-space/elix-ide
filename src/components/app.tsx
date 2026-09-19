@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { VSCodeWorkbench } from './vscode/VSCodeWorkbench';
 import { SplashScreen } from './common/SplashScreen';
 
@@ -8,7 +8,7 @@ export default function App() {
     <>
       {showSplash && (
         <SplashScreen
-          appName="Blink"
+          appName="ElixirIDE"
           tagline="AI-powered document editing"
           onDismissComplete={() => setShowSplash(false)}
         />

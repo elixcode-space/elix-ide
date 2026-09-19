@@ -1,0 +1,11 @@
+{
+  "Program": "./elixide-core",
+  "Args": [],
+  "Mounts": {
+    "models": "/.local/models"
+  },
+  "Klibs": [
+    "nanos/net",
+    "nanos/kvm"
+  ]
+}

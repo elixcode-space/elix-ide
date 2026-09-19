@@ -11,7 +11,7 @@ import type { IDisposable } from '@codingame/monaco-vscode-api/vscode/vs/base/co
 
 // PPTX Editor Input - represents a PowerPoint file in the editor
 class PptxEditorInput extends SimpleEditorInput {
-  static readonly ID = 'blink.pptxEditorInput';
+  static readonly ID = 'elixide.pptxEditorInput';
   private _path: string;
 
   constructor(resource: URI) {
@@ -33,7 +33,7 @@ class PptxEditorInput extends SimpleEditorInput {
 
 // PPTX Editor Pane - renders the PowerPoint content
 class PptxEditorPane extends SimpleEditorPane {
-  static readonly ID = 'blink.pptxEditorPane';
+  static readonly ID = 'elixide.pptxEditorPane';
   private docContainer: HTMLDivElement | null = null;
   private currentPath: string | null = null;
 

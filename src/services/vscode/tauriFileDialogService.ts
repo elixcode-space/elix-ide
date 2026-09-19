@@ -9,7 +9,7 @@ import { open as openDialog, save as saveDialog } from '@tauri-apps/plugin-dialo
 import { homeDir } from '@tauri-apps/api/path';
 
 // Storage key for workspace folder
-const WORKSPACE_FOLDER_KEY = 'blink-workspace-folder';
+const WORKSPACE_FOLDER_KEY = 'elixide-workspace-folder';
 
 /**
  * Store the workspace folder path

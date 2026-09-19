@@ -1,7 +1,17 @@
 {
-  "name": "demo-application",
-  "version": "0.0.0",
-  "description": "Blink - AI-powered document editing",
+  "name": "elixide",
+  "version": "0.1.0",
+  "description": "ElixIDE - AI-powered agentic IDE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elixcode-space/elix-ide.git"
+  },
+  "author": "ElixCode Space",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elixcode-space/elix-ide/issues"
+  },
+  "homepage": "https://elixcode.space",
   "dependencies": {
     "@codingame/monaco-vscode-accessibility-service-override": "^24.2.0",
     "@codingame/monaco-vscode-ai-service-override": "^24.2.0",

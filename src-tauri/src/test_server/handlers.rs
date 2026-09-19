@@ -218,7 +218,7 @@ pub async fn open_window(
     };
 
     // Create new window
-    let title = request.title.unwrap_or_else(|| format!("Blink - {}", folder.split('/').last().unwrap_or("Context")));
+    let title = request.title.unwrap_or_else(|| format!("ElixirIDE - {}", folder.split('/').last().unwrap_or("Context")));
 
     // Build the URL with folder parameter
     let url = format!("http://localhost:8000/#/vscode?folder={}", urlencoding::encode(&folder));
@@ -536,7 +536,7 @@ pub async fn get_dom(
         StatusCode::OK,
         Json(DomSnapshot {
             html: "<html>...</html>".to_string(),
-            title: "Blink".to_string(),
+            title: "ElixirIDE".to_string(),
             url: "http://localhost:8000".to_string(),
         }),
     )

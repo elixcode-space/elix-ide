@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run all Blink Tauri E2E tests
+# Run all ElixirIDE Tauri E2E tests
 # Usage: ./testing/tauri/run-tests.sh [options]
 #
 # Options:
@@ -51,7 +51,7 @@ SUITE_FAILED=0
 
 echo ""
 echo "╔═══════════════════════════════════════════════════════════════╗"
-echo "║           Blink Tauri E2E Test Suite                   ║"
+echo "║           ElixirIDE Tauri E2E Test Suite                   ║"
 echo "╚═══════════════════════════════════════════════════════════════╝"
 echo ""
 
@@ -162,7 +162,7 @@ echo "╚═══════════════════════�
 echo ""
 
 # Generate report
-generate_report "$TOTAL_PASSED" "$TOTAL_FAILED" "$TOTAL_SKIPPED" "/tmp/blink-test-report.json"
+generate_report "$TOTAL_PASSED" "$TOTAL_FAILED" "$TOTAL_SKIPPED" "/tmp/elixide-test-report.json"
 
 # Exit with appropriate code
 if [ $TOTAL_FAILED -gt 0 ]; then

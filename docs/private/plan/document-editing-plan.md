@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This plan extends Blink's existing document preview capabilities into full WYSIWYG editing. The current implementation already has:
+This plan extends ElixirIDE's existing document preview capabilities into full WYSIWYG editing. The current implementation already has:
 
 - Rust backends for Word (docx_rs), Excel (calamine + rust_xlsxwriter), PowerPoint (Node.js sidecar)
 - Basic editor components (WordEditor, ExcelEditor, PowerPointEditor)

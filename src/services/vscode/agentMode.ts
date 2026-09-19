@@ -128,7 +128,7 @@ You have access to the following tools:
  * Get workspace folder path
  */
 function getWorkspaceFolder(): string | null {
-  return localStorage.getItem('blink-workspace-folder');
+  return localStorage.getItem('elixide-workspace-folder');
 }
 
 /**
@@ -758,7 +758,7 @@ export function getCurrentAgentSession(): AgentSession | null {
 class AgentModeAction extends Action2 {
   constructor() {
     super({
-      id: 'blink.agentMode',
+      id: 'elixide.agentMode',
       title: { value: 'AI: Start Agent', original: 'AI: Start Agent' },
       category: { value: 'AI', original: 'AI' },
       f1: true,
@@ -833,7 +833,7 @@ class AgentModeAction extends Action2 {
 class CancelAgentAction extends Action2 {
   constructor() {
     super({
-      id: 'blink.cancelAgent',
+      id: 'elixide.cancelAgent',
       title: { value: 'AI: Cancel Agent', original: 'AI: Cancel Agent' },
       category: { value: 'AI', original: 'AI' },
       f1: true,

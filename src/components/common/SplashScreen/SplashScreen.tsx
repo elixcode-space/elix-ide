@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from 'react';
 import { useState, useEffect } from 'react';
 import './SplashScreen.css';
-import { BlinkLogo } from '../BlinkLogo/BlinkLogo';
+import { ElixirIDELogo } from '../ElixirIDELogo/ElixirIDELogo';
 import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
 
 /**
@@ -18,14 +18,14 @@ interface SplashScreenProps {
   loadingMessage?: string;
   /** Whether to show the animated loading spinner */
   showSpinner?: boolean;
-  /** Custom logo component (overrides default Blink logo) */
+  /** Custom logo component (overrides default ElixirIDE logo) */
   customLogo?: ReactNode;
   /** Minimum display time in milliseconds before auto-dismiss */
   minDisplayTime?: number;
 }
 
 /**
- * Animated splash screen with Blink dark theme for Blink.
+ * Animated splash screen with ElixirIDE dark theme for ElixirIDE.
  *
  * @param root0 - Props object
  * @param root0.onDismissComplete - Callback fired after the exit animation completes
@@ -39,7 +39,7 @@ interface SplashScreenProps {
  */
 export const SplashScreen: FC<SplashScreenProps> = ({
   onDismissComplete,
-  appName = 'Blink',
+  appName = 'ElixirIDE',
   tagline = 'AI-powered document editing',
   loadingMessage = 'Initializing...',
   showSpinner = true,
@@ -114,7 +114,7 @@ export const SplashScreen: FC<SplashScreenProps> = ({
         {/* Logo and Title Section */}
         <div className="splash-header">
           {/* Logo */}
-          <div className="splash-logo">{customLogo || <BlinkLogo />}</div>
+          <div className="splash-logo">{customLogo || <ElixirIDELogo />}</div>
 
           {/* Vertical Divider */}
           <div className="splash-divider" />

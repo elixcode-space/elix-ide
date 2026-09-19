@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import './LoadingSpinner.css';
 
 /**
- * Animated loading spinner with Blink branding.
+ * Animated loading spinner with ElixirIDE branding.
  *
  * @returns Loading spinner SVG element
  */

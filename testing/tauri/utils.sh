@@ -1,5 +1,5 @@
 #!/bin/bash
-# Utility functions for Blink Tauri testing
+# Utility functions for ElixirIDE Tauri testing
 # Source this file to use utility functions in test scripts
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -12,9 +12,9 @@ PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 # Start the Tauri application in development mode
 # Usage: start_app [log_file]
 start_app() {
-    local log_file="${1:-/tmp/blink-test.log}"
+    local log_file="${1:-/tmp/elixide-test.log}"
 
-    echo "Starting Blink application..."
+    echo "Starting ElixirIDE application..."
 
     # Kill any existing instance
     stop_app 2>/dev/null
@@ -28,7 +28,7 @@ start_app() {
     local pid=$!
 
     echo "Started with PID $pid, logging to $log_file"
-    echo $pid > /tmp/blink-test.pid
+    echo $pid > /tmp/elixide-test.pid
 
     return 0
 }
@@ -36,15 +36,15 @@ start_app() {
 # Stop the Tauri application
 # Usage: stop_app
 stop_app() {
-    if [ -f /tmp/blink-test.pid ]; then
-        local pid=$(cat /tmp/blink-test.pid)
+    if [ -f /tmp/elixide-test.pid ]; then
+        local pid=$(cat /tmp/elixide-test.pid)
         kill $pid 2>/dev/null
-        rm -f /tmp/blink-test.pid
+        rm -f /tmp/elixide-test.pid
         echo "Stopped application (PID $pid)"
     fi
 
     # Also kill any orphaned processes
-    pkill -f "blink" 2>/dev/null
+    pkill -f "elixide" 2>/dev/null
     pkill -f "cargo run" 2>/dev/null
 }
 
@@ -52,7 +52,7 @@ stop_app() {
 # Usage: wait_for_app [timeout_seconds]
 wait_for_app() {
     local timeout="${1:-120}"
-    local log_file="${2:-/tmp/blink-test.log}"
+    local log_file="${2:-/tmp/elixide-test.log}"
     local elapsed=0
 
     echo -n "Waiting for test server (8000/9999)..."
@@ -95,7 +95,7 @@ wait_for_app() {
 # Check if there are critical errors in the log
 # Usage: check_for_errors [log_file]
 check_for_errors() {
-    local log_file="${1:-/tmp/blink-test.log}"
+    local log_file="${1:-/tmp/elixide-test.log}"
 
     if grep -qi "panic\|fatal\|crash" "$log_file" 2>/dev/null; then
         echo "Critical errors found in log:"
@@ -109,7 +109,7 @@ check_for_errors() {
 # Get webpack build status from log
 # Usage: get_build_status [log_file]
 get_build_status() {
-    local log_file="${1:-/tmp/blink-test.log}"
+    local log_file="${1:-/tmp/elixide-test.log}"
 
     if grep -q "compiled successfully" "$log_file" 2>/dev/null; then
         echo "success"
@@ -148,7 +148,7 @@ check_dependencies() {
 # Create a temporary test workspace
 # Usage: create_test_workspace
 create_test_workspace() {
-    local workspace="/tmp/blink-test-workspace"
+    local workspace="/tmp/elixide-test-workspace"
     rm -rf "$workspace"
     mkdir -p "$workspace"
 
@@ -163,9 +163,9 @@ create_test_workspace() {
 # Clean up test artifacts
 # Usage: cleanup_tests
 cleanup_tests() {
-    rm -rf /tmp/blink-test-workspace
-    rm -f /tmp/blink-test.log
-    rm -f /tmp/blink-test.pid
+    rm -rf /tmp/elixide-test-workspace
+    rm -f /tmp/elixide-test.log
+    rm -f /tmp/elixide-test.pid
     echo "Cleaned up test artifacts"
 }
 

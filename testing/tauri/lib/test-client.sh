@@ -1,5 +1,5 @@
 #!/bin/bash
-# Core test client library for Blink Tauri E2E testing
+# Core test client library for ElixirIDE Tauri E2E testing
 # Source this file to use test functions in your scripts
 #
 # Multi-Window Support:

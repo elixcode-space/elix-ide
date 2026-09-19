@@ -1,0 +1,47 @@
+{
+  "name": "elixide-office-custom-editors-web",
+  "publisher": "elixide",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "activationEvents": [
+    "onCustomEditor:elixide.docxBinary",
+    "onCustomEditor:elixide.xlsxBinary",
+    "onCustomEditor:elixide.pptxBinary"
+  ],
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "elixide.docxBinary",
+        "displayName": "ElixirIDE DOCX Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.docx"
+          }
+        ],
+        "priority": "default"
+      },
+      {
+        "viewType": "elixide.xlsxBinary",
+        "displayName": "ElixirIDE XLSX Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.xlsx"
+          }
+        ],
+        "priority": "default"
+      },
+      {
+        "viewType": "elixide.pptxBinary",
+        "displayName": "ElixirIDE PPTX Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.pptx"
+          }
+        ],
+        "priority": "default"
+      }
+    ]
+  }
+}
