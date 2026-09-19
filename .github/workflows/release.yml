@@ -18,21 +18,21 @@ jobs:
         include:
           - os: macos-latest
             target: x86_64-apple-darwin
-            artifact_name: ElixIDE_x64.dmg
+            artifact_name: ElixirIDE_x64.dmg
             installer: dmg
           - os: macos-latest
             target: aarch64-apple-darwin
-            artifact_name: ElixIDE_arm64.dmg
+            artifact_name: ElixirIDE_arm64.dmg
             installer: dmg
             env:
               MACOSX_DEPLOYMENT_TARGET: '11.0'
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-            artifact_name: ElixIDE_x64.msi
+            artifact_name: ElixirIDE_x64.msi
             installer: msi
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
-            artifact_name: ElixIDE_x64.AppImage
+            artifact_name: ElixirIDE_x64.AppImage
             installer: appimage
             env:
               CC: gcc
@@ -107,18 +107,18 @@ jobs:
           WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
         with:
           tagName: ${{ github.ref_name }}
-          releaseName: 'ElixIDE ${{ github.ref_name }}'
+          releaseName: 'ElixirIDE ${{ github.ref_name }}'
           releaseBody: |
-            ## ElixIDE ${{ github.ref_name }}
+            ## ElixirIDE ${{ github.ref_name }}
 
             ### Changes
             See [CHANGELOG.md](CHANGELOG.md) for details.
 
             ### Downloads
-            - **macOS (Intel)**: `ElixIDE_x64.dmg`
-            - **macOS (Apple Silicon)**: `ElixIDE_arm64.dmg`
-            - **Windows**: `ElixIDE_x64.msi`
-            - **Linux**: `ElixIDE_x64.AppImage`
+            - **macOS (Intel)**: `ElixirIDE_x64.dmg`
+            - **macOS (Apple Silicon)**: `ElixirIDE_arm64.dmg`
+            - **Windows**: `ElixirIDE_x64.msi`
+            - **Linux**: `ElixirIDE_x64.AppImage`
 
             ### Verification
             All binaries are signed and notarized.
