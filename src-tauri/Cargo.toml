@@ -64,7 +64,7 @@ tokio = { version = "1", features = ["full"] }
 thiserror = "1"
 
 # Test server (debug builds only)
-axum = { version = "0.7", features = ["ws"] }
+axum = { version = "0.8", features = ["ws"] }
 tower = "0.5"
 tower-http = { version = "0.5", features = ["cors"] }
 urlencoding = "2"
