@@ -11,10 +11,20 @@ It runs VS Code's actual editor engine (via [monaco-vscode-api](https://github.c
 ---
 
 ## Screenshots
-
-![ElixirIDE editor with file explorer and AI chat panel](docs/screenshots/elixide-editor.png)
+![ElixirIDE editor](docs/screenshots/elixide-editor.png)
 
 *File explorer, integrated terminal, and AI chat panel (ElixirIDE Code Assist) side by side.*
+
+---
+
+## Links
+
+- **Repository**: [github.com/elixcode-space/elix-ide](https://github.com/elixcode-space/elix-ide)
+- **Website**: [elixcode.space](https://elixcode.space)
+- **Issues**: [GitHub Issues](https://github.com/elixcode-space/elix-ide/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/elixcode-space/elix-ide/discussions)
+
+---
 
 ![ElixirIDE extensions marketplace](docs/screenshots/elixide-extensions.png)
 
