@@ -68,7 +68,7 @@ jobs:
           brew install pkg-config
 
       - name: Cache Cargo
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: |
             ~/.cargo/bin/
