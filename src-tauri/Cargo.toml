@@ -110,7 +110,7 @@ url = "2.5"
 git2 = "0.18"
 
 # Phase 1: File watching
-notify = { version = "6", features = ["fsevent-sys"] }
+notify = { version = "8", features = ["fsevent-sys"] }
 
 # Utilities
 anyhow = "1.0"
