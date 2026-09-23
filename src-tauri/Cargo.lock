@@ -1884,7 +1884,7 @@ dependencies = [
  "calamine",
  "chrono",
  "criterion",
- "dirs 5.0.1",
+ "dirs 6.0.0",
  "docx-rs",
  "flate2",
  "futures-util",
