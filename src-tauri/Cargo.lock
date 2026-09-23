@@ -369,6 +369,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "atoi_simd"
+version = "0.18.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f3cdb3708a128e559a30fb830e8a77a5022ee6902806925c216658652b452a44"
+dependencies = [
+ "debug_unsafe",
+ "rustversion",
+]
+
+[[package]]
 name = "atomic-waker"
 version = "1.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -766,17 +776,19 @@ dependencies = [
 
 [[package]]
 name = "calamine"
-version = "0.24.0"
+version = "0.36.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8a3a315226fdc5b1c3e33521073e1712a05944bc0664d665ff1f6ff0396334da"
+checksum = "5fa68281b1a76b54a62156474adb06bb380a67e07dd60656e3217152b42183f3"
 dependencies = [
+ "atoi_simd",
  "byteorder",
  "codepage",
  "encoding_rs",
+ "fast-float2",
  "log",
- "quick-xml 0.31.0",
+ "quick-xml 0.41.0",
  "serde",
- "zip 0.6.6",
+ "zip 8.6.0",
 ]
 
 [[package]]
@@ -1503,6 +1515,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "debug_unsafe"
+version = "0.1.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7eed2c4702fa172d1ce21078faa7c5203e69f5394d48cc436d25928394a867a2"
+
+[[package]]
 name = "deflate64"
 version = "0.1.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2140,6 +2158,12 @@ name = "fallible-streaming-iterator"
 version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7360491ce676a36bf9bb3c56c1aa791658183a54d2744120f27285738d90465a"
+
+[[package]]
+name = "fast-float2"
+version = "0.2.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c6e8948ce679d00a02a94739ea185595dca7118ed04feb991127e443bd3d761f"
 
 [[package]]
 name = "fastdivide"
@@ -5588,16 +5612,6 @@ name = "quick-error"
 version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a993555f31e5a609f617c12db6250dedcac1b0a85076912c436e6fc9b2c8e6a3"
-
-[[package]]
-name = "quick-xml"
-version = "0.31.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1004a344b30a54e2ee58d66a71b32d2db2feb0a31f9a2d302bf0536f15de2a33"
-dependencies = [
- "encoding_rs",
- "memchr",
-]
 
 [[package]]
 name = "quick-xml"
@@ -10217,18 +10231,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 3.0.6",
-]
-
-[[package]]
-name = "zip"
-version = "0.6.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "760394e246e4c28189f19d488c058bf16f564016aefac5d32bb1f3b51d5e9261"
-dependencies = [
- "byteorder",
- "crc32fast",
- "crossbeam-utils",
- "flate2",
 ]
 
 [[package]]
