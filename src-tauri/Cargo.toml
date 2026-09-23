@@ -61,7 +61,7 @@ zip = "2"
 tokio = { version = "1", features = ["full"] }
 
 # Error handling
-thiserror = "1"
+thiserror = "2"
 
 # Test server (debug builds only)
 axum = { version = "0.8", features = ["ws"] }
