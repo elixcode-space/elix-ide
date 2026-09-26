@@ -107,7 +107,7 @@ tokio-util = { version = "0.7", features = ["codec"] }
 url = "2.5"
 
 # Phase 1: Git
-git2 = "0.18"
+git2 = "0.21"
 
 # Phase 1: File watching
 notify = { version = "6", features = ["fsevent-sys"] }
